@@ -1,0 +1,477 @@
+﻿///$tab Main
+SET ThousandSep=',';
+SET DecimalSep='.';
+SET MoneyThousandSep=',';
+SET MoneyDecimalSep='.';
+SET MoneyFormat='£#,##0.00;-£#,##0.00';
+SET TimeFormat='hh:mm:ss';
+SET DateFormat='DD/MM/YYYY';
+SET TimestampFormat='DD/MM/YYYY hh:mm:ss[.fff]';
+SET FirstWeekDay=0;
+SET BrokenWeeks=0;
+SET ReferenceDay=4;
+SET FirstMonthOfYear=1;
+SET CollationLocale='en-GB';
+SET MonthNames='Jan;Feb;Mar;Apr;May;Jun;Jul;Aug;Sep;Oct;Nov;Dec';
+SET LongMonthNames='January;February;March;April;May;June;July;August;September;October;November;December';
+SET DayNames='Mon;Tue;Wed;Thu;Fri;Sat;Sun';
+SET LongDayNames='Monday;Tuesday;Wednesday;Thursday;Friday;Saturday;Sunday';
+
+set qvdCampaign = 'Campaign';
+set qvdCampany = 'Company';
+set qvdContact = 'Contact';
+set qvdOrder = 'Order';
+set qvdProduct = 'Product';
+set qvdReferalPartner = 'ReferalPartner';
+set qvdTemplate = 'Template';
+set qvdVisitor = 'Visitor';
+
+set HidPrefix = '^';
+
+set qvdPath = 'C:\Users\Piers\Documents\Tessa\Qlik\Data';
+set dataDir = 'C:\Users\Piers\Documents\Tessa\Qlik\Data';
+///$tab campaingn
+$(qvdCampaign):
+QUALIFY *;
+UNQUALIFY %CampaignId;
+LOAD 
+	Id as %CampaignId, 
+	Name,
+	Categories, 
+	[Active Contacts], 
+	Date([Published Date])
+FROM [$(dataDir)\$(qvdCampaign).csv] (txt, codepage is 1252, embedded labels, delimiter is ',', msq);
+UNQUALIFY *;
+STORE $(qvdCampaign) into $(qvdPath)/$(qvdCampaign).qvd(qvd);
+drop table $(qvdCampaign);
+
+
+
+
+///$tab company
+$(qvdCampany):
+QUALIFY *;
+UNQUALIFY %CampanyId;
+LOAD 
+	Id as %CampanyId, 
+	[Company Action], 
+	Company, 
+	[Main Contact First Name], 
+	[Main Contact Last Name], 
+	[Company Name], 
+	[Street Address 1], 
+	[Street Address 2], 
+	City, 
+	State, 
+	Country, 
+	[Postal Code], 
+	[Zip Four 1], 
+	Website, 
+	Phone, 
+	Fax, 
+	Email, 
+	[Date Created], 
+	[Tag Ids], 
+	Tags
+FROM [$(dataDir)\$(qvdCampany).csv] (txt, codepage is 1252, embedded labels, delimiter is ',', msq);
+UNQUALIFY *;
+
+///$tab referal partner
+$(qvdReferalPartner):
+QUALIFY *;
+UNQUALIFY %ReferralPartnerId;
+LOAD 
+	[Referral Partner Id] as %ReferralPartnerId, 
+	[Contact Id] as ContactId,
+	[Referral Partner Name], 
+	[Referral Partner Code], 
+	Parent 		
+	/*
+	//Removed as repated informationo in Contact table	
+		[First Name], 
+		[Last Name], 
+		Email, 
+		Company, 
+		[Street Address 1], 
+		[Street Address 2], 
+		City, 
+		State, 
+		[Postal Code], 
+		Country, 
+		[Phone 1]
+
+		[Contact: Landlord Law Newsletter], 
+		[Contact: Add Method], 
+		[Contact: Add URL], 
+		[Contact: DMA Code], 
+		[Contact: IP Address], 
+		[Contact: Message], 
+		[Contact: Name 1], 
+		[Contact: Status], 
+		[Contact: Verified], 
+		[Contact: Membership began (?)], 
+		[Contact: Membership renewal date (non IS   pmt)], 
+		[Contact: LLL Drupal User number], 
+		[Contact: Drupal User Name], 
+		[Contact: DrupalPW], 
+		[Contact: Drupal Role], 
+		[Contact: Membership Product Name], 
+		[Contact: Feedback / testimonial], 
+		[Contact: Old SO ID no], 
+		[Contact: Next IS Bill Date Calendar], 
+		[Contact: Next IS Bill Date], 
+		[Contact: Date for plus this countdown timer], 
+		[Contact: Days from first contact to add current LLL tag], 
+		[Contact: Send why are you unhappy email], 
+		[Contact: Follow up], 
+		[Contact: IPAddress], 
+		[Contact: Referred Friend's Name], 
+		[Contact: Referred Friend's Email], 
+		[Contact: NPS Comments], 
+		[Contact: Veggie diet?], 
+		[Contact: Gluten free], 
+		[Contact: Diary free], 
+		[Contact: Lactose free], 
+		[Contact: Nut Allergy], 
+		[Contact: Special Diet Notes:], 
+		[Contact: Disability / health issue], 
+		[Contact: Date diet info provided by contact], 
+		[Contact: Moodle Username], 
+		[Contact: Moodle site password], 
+		[Contact: Appointment Time], 
+		[Contact: Appointment Date], 
+		[Contact: Date for attendance note], 
+		[Contact: Attendance Note Text], 
+	//Removed as conflict with other tables 
+		[Tag Ids]
+	*/
+FROM [$(dataDir)\$(qvdReferalPartner).csv] (txt, codepage is 1252, embedded labels, delimiter is ',', msq);
+UNQUALIFY *;
+STORE $(qvdReferalPartner) into $(qvdPath)/$(qvdReferalPartner).qvd(qvd);
+
+///$tab contact
+$(qvdContact):
+QUALIFY *;
+UNQUALIFY %ContactId, %CampanyId;
+LOAD 
+	Id as %ContactId,
+	[Company Id] as %CampanyId, 	 
+	Name, 
+	[First Name], 
+	[Last Name], 
+	[Spouse Name], 
+	Date(Birthday), 
+	[Company Name], 
+	//[Phone 1], 
+	//[Phone 1], 
+	//[Phone 1 Ext], 
+	//[Phone 1 Type], 
+	//[Phone 2], 
+	//[Phone 2], 
+	//[Phone 2 Ext], 
+	//[Phone 2 Type], 
+	//[Phone 3], 
+	//[Phone 3], 
+	//[Phone 3 Ext], 
+	//[Phone 3 Type], 
+	Email, 
+	[Email Address 2], 
+	[Email Address 3], 
+	//[Fax 1], 
+	//[Fax 1], 
+	//[Fax 1 Type], 
+	//[Fax 2], 
+	//[Fax 2], 
+	//[Fax 2 Type], 
+	[Street Address 1], 
+	[Street Address 2], 
+	City, 
+	State, 
+	//[Postal Code], 
+	//[Postal Code], 
+	[Zip Four], 
+	Country, 
+	[Street Address 1 (Shipping)], 
+	[Street Address 2 (Shipping)], 
+	[City (Shipping)], 
+	[State (Shipping)], 
+	//[Postal Code (Shipping)], 
+	//[Postal Code (Shipping)], 
+	[Zip Four (Shipping)], 
+	[Country (Shipping)], 
+	Twitter, 
+	Facebook, 
+	LinkedIn, 
+	[Street Address 1 (Optional)], 
+	[Street Address 2 (Optional)], 
+	[City (Optional)], 
+	[State (Optional)], 
+	//[Postal Code (Optional)], 
+	//[Postal Code (Optional)], 
+	[Zip Four (Optional)], 
+	[Country (Optional)], 
+	//[Phone 4], 
+	//[Phone 4], 
+	//[Phone 4 Ext], 
+	//[Phone 4 Type], 
+	//[Phone 5], 
+	//[Phone 5], 
+	//[Phone 5 Ext], 
+	//[Phone 5 Type], 
+	[Person Type], 
+	[Job Title], 
+	Website, 
+	SSN, 
+	[Last 4 SSN], 
+	[Middle Name], 
+	Nickname, 
+	Username, 
+	[Assistant Name], 
+	[Assistant Phone], 
+	Title, 
+	Suffix, 
+	Anniversary, 
+	[Created By], 
+	[Date Created],
+	[Last Updated], 
+	OwnerID, 
+	Language, 
+	[Time Zone], 
+	Owner, 
+	[Lead Source], 
+	[Lead Source Category], 
+	[Referral Code], 
+	[Landlord Law Newsletter], 
+	[Add Method], 
+	[Add URL], 
+	[DMA Code], 
+	[IP Address], 
+	Message, 
+	[Name 1], 
+	Status, 
+	Verified, 
+	[Membership began (?)], 
+	[Membership renewal date (non IS   pmt)], 
+	[LLL Drupal User number], 
+	[Drupal User Name], 
+	[Drupal Role], 
+	[Membership Product Name], 
+	[Feedback / testimonial], 
+	[Old SO ID no], 
+	[Next IS Bill Date Calendar], 
+	[Next IS Bill Date], 
+	[Date for plus this countdown timer], 
+	[Days from first contact to add current LLL tag], 
+	[Send why are you unhappy email], 
+	[Follow up], 
+	IPAddress, 
+	[Referred Friend's Name], 
+	[Referred Friend's Email], 
+	[NPS Comments], 
+	[Veggie diet?], 
+	[Gluten free], 
+	[Diary free], 
+	[Lactose free], 
+	[Nut Allergy], 
+	[Special Diet Notes:], 
+	[Disability / health issue], 
+	[Date diet info provided by contact], 
+	[Moodle Username], 
+	[Appointment Time], 
+	[Appointment Date], 
+	[Date for attendance note], 
+	[Attendance Note Text], 
+	[Lead Score]
+	/*
+	//Following field repated due to fields haveing the same name
+	
+	//Fields removed for password protection
+		DrupalPW, 
+		Password, 
+		[Moodle site password], 
+	//Removed to avoid conflict with other tables
+		[Tag Ids], 
+		Tags, 
+	*/			
+FROM [$(dataDir)\$(qvdContact).csv] (txt, codepage is 1252, embedded labels, delimiter is ',', msq);
+UNQUALIFY *;
+
+///$tab combined contact
+Left Join($(qvdContact))
+LOAD 	
+	 *
+Resident $(qvdCampany);
+/*
+Left Join($(qvdContact))
+LOAD 	
+	 *
+Resident $(qvdReferalPartner);
+*/
+STORE $(qvdContact) into $(qvdPath)/$(qvdContact).qvd(qvd);
+drop Tables $(qvdCampany);//, $(qvdReferalPartner);
+///$tab product
+$(qvdProduct):
+LOAD 
+	Id as %ProductId, 
+	[Product Name], 
+	Sku, 
+	KeepChar(Price, '0123456789.') as Price,
+	[Product Status], 
+	[Product Category]
+FROM [$(dataDir)\$(qvdProduct).csv] (txt, codepage is 1252, embedded labels, delimiter is ',', msq);
+STORE $(qvdProduct) into $(qvdPath)/$(qvdProduct).qvd(qvd);
+//drop table $(qvdProduct);
+///$tab order
+$(qvdOrder):
+LOAD 
+	Id as %OrderId, 
+	ContactId as %ContactId,
+	[Product Ids] as %ProductId,
+	[Affiliate Id] as %ReferralPartnerId, //Is this the same thing as a referal partner?	
+	[Order Type], 
+	[Promo Code], 
+	[Order Title], 
+	[Order Date], 	
+	Serial, 
+	KeepChar([Order Total], '0123456789.') as [Order Total] 
+	/*
+	//Repeat of Id
+		[Order Id], 	
+	// Removed as probably repeating information in contants table
+		Contact, 
+		[First Name], 
+		[Last Name], 
+		Title, 
+		[Co Name], 
+		[Street Address 1], 
+		[Street Address 2], 
+		City, 
+		State, 
+		[Postal Code], 
+		Country, 
+	// Removed as repeting information in Products table
+		[Product Name], 
+	//Removed as conflict with other tables 
+		[Tag Ids], 
+	//Removed as repated informationo in Contact table
+		[Contact: Landlord Law Newsletter], 
+		[Contact: Add Method], 
+		[Contact: Add URL], 
+		[Contact: DMA Code], 
+		[Contact: IP Address], 
+		[Contact: Message], 
+		[Contact: Name 1], 
+		[Contact: Status], 
+		[Contact: Verified], 
+		[Contact: Membership began (?)], 
+		[Contact: Membership renewal date (non IS   pmt)], 
+		[Contact: LLL Drupal User number], 
+		[Contact: Drupal User Name], 
+		[Contact: DrupalPW], 
+		[Contact: Drupal Role], 
+		[Contact: Membership Product Name], 
+		[Contact: Feedback / testimonial], 
+		[Contact: Old SO ID no], 
+		[Contact: Next IS Bill Date Calendar], 
+		[Contact: Next IS Bill Date], 
+		[Contact: Date for plus this countdown timer], 
+		[Contact: Days from first contact to add current LLL tag], 
+		[Contact: Send why are you unhappy email], 
+		[Contact: Follow up], 
+		[Contact: IPAddress], 
+		[Contact: Referred Friend's Name], 
+		[Contact: Referred Friend's Email], 
+		[Contact: NPS Comments], 
+		[Contact: Veggie diet?], 
+		[Contact: Gluten free], 
+		[Contact: Diary free], 
+		[Contact: Lactose free], 
+		[Contact: Nut Allergy], 
+		[Contact: Special Diet Notes:], 
+		[Contact: Disability / health issue], 
+		[Contact: Date diet info provided by contact], 
+		[Contact: Moodle Username], 
+		[Contact: Moodle site password], 
+		[Contact: Appointment Time], 
+		[Contact: Appointment Date], 
+		[Contact: Date for attendance note], 
+		[Contact: Attendance Note Text]
+	*/
+FROM [$(dataDir)\$(qvdOrder).csv] (txt, codepage is 1252, embedded labels, delimiter is ',', msq);
+STORE $(qvdOrder) into $(qvdPath)/$(qvdOrder).qvd(qvd);
+//drop table $(qvdOrder);
+
+///$tab template
+$(qvdTemplate):
+QUALIFY *;
+UNQUALIFY %TemplateId;
+LOAD 
+	Id as %TemplateId, 
+	Name, 
+	Categories, 
+	Type, 
+	Ready, 
+	[Name Hidden], 
+	Shared
+FROM [$(dataDir)\$(qvdTemplate).csv] (txt, codepage is 1252, embedded labels, delimiter is ',', msq);
+UNQUALIFY *;
+STORE $(qvdTemplate) into $(qvdPath)/$(qvdTemplate).qvd(qvd);
+drop table $(qvdTemplate);
+
+///$tab visitor
+$(qvdVisitor):
+QUALIFY *;
+UNQUALIFY %VisitorId;
+LOAD 
+	Id as %VisitorId, 
+	Os, 
+	[Screen Resolution], 
+	[Last Visit Date], 
+	[Browser Name], 
+	[Browser Version], 
+	[Adobe Reader Installed], 
+	[Flash Installed], 
+	[Java Installed], 
+	[Shockwave Installed], 
+	[Quicktime Installed], 
+	[Realplayer Installed], 
+	[Wmp Installed], 
+	[Silverlight Installed], 
+	[Date Created], 
+	[Lead Source.Id], 
+	[Lead Source]
+FROM [$(dataDir)\$(qvdVisitor).csv] (txt, codepage is 1252, embedded labels, delimiter is ',', msq);
+UNQUALIFY *;
+STORE $(qvdVisitor) into $(qvdPath)/$(qvdVisitor).qvd(qvd);
+drop table $(qvdVisitor);
+
+
+///$tab master calendar
+DataRange:
+LOAD
+	min([Order Date]) as MinDate,
+	max([Order Date]) as MaxDate
+Resident $(qvdOrder);
+
+LET vMinDate = Peek('MinDate', 0, 'DateRange');
+LET vMaxDate = Peek('MaxDate', 0, 'DateRange');
+
+TempCalDate:
+LOAD
+	date($(vMinDate) + RowNo() -1) as CalDate
+AutoGenerate $(vMaxDate) - $(vMinDate) + 1;
+
+Calendar:
+LOAD
+	CalDate as [Order Date],
+	day(CalDate) as Day,
+	year(CalDate) as Year,
+	month(CalDate) as Month,
+	week(CalDate) as Week,
+	'Q' & Ceil(month(CalDate)/3) as Quater,
+	date(monthstart(CalDate), 'MMM-YYYY') as MonthYear
+Resident TempCalDate
+order by CalDate asc;
+
+drop Tables DataRange, TempCalDate;
+STORE Calendar into $(qvdPath)/Calendar.qvd(qvd);

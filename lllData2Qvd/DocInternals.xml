@@ -1,0 +1,761 @@
+﻿<DocInternals>
+  <AlwaysLoose>
+    <bool>false</bool>
+    <bool>false</bool>
+    <bool>false</bool>
+    <bool>false</bool>
+    <bool>false</bool>
+    <bool>false</bool>
+    <bool>false</bool>
+    <bool>false</bool>
+  </AlwaysLoose>
+  <FieldSrcTables>
+    <String>6</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>7</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>8</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>9</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>10</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>11</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>12</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>13</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>14</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>15</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>16</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>17</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>18</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>19</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>20</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>21</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>22</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>23</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>24</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>25</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>26</String>
+    <String>2</String>
+    <String>ReferalPartner</String>
+    <String>Order</String>
+    <String>27</String>
+    <String>1</String>
+    <String>ReferalPartner</String>
+    <String>28</String>
+    <String>1</String>
+    <String>ReferalPartner</String>
+    <String>29</String>
+    <String>1</String>
+    <String>ReferalPartner</String>
+    <String>30</String>
+    <String>1</String>
+    <String>ReferalPartner</String>
+    <String>31</String>
+    <String>2</String>
+    <String>Contact</String>
+    <String>Order</String>
+    <String>32</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>33</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>34</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>35</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>36</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>37</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>38</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>39</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>40</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>41</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>42</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>43</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>44</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>45</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>46</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>47</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>48</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>49</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>50</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>51</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>52</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>53</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>54</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>55</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>56</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>57</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>58</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>59</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>60</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>61</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>62</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>63</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>64</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>65</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>66</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>67</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>68</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>69</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>70</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>71</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>72</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>73</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>74</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>75</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>76</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>77</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>78</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>79</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>80</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>81</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>82</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>83</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>84</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>85</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>86</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>87</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>88</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>89</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>90</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>91</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>92</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>93</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>94</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>95</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>96</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>97</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>98</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>99</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>100</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>101</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>102</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>103</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>104</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>105</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>106</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>107</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>108</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>109</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>110</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>111</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>112</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>113</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>114</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>115</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>116</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>117</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>118</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>119</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>120</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>121</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>122</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>123</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>124</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>125</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>126</String>
+    <String>2</String>
+    <String>Product</String>
+    <String>Order</String>
+    <String>127</String>
+    <String>1</String>
+    <String>Product</String>
+    <String>128</String>
+    <String>1</String>
+    <String>Product</String>
+    <String>129</String>
+    <String>1</String>
+    <String>Product</String>
+    <String>130</String>
+    <String>1</String>
+    <String>Product</String>
+    <String>131</String>
+    <String>1</String>
+    <String>Product</String>
+    <String>132</String>
+    <String>1</String>
+    <String>Order</String>
+    <String>133</String>
+    <String>1</String>
+    <String>Order</String>
+    <String>134</String>
+    <String>1</String>
+    <String>Order</String>
+    <String>135</String>
+    <String>1</String>
+    <String>Order</String>
+    <String>136</String>
+    <String>2</String>
+    <String>Order</String>
+    <String>Calendar</String>
+    <String>137</String>
+    <String>1</String>
+    <String>Order</String>
+    <String>138</String>
+    <String>1</String>
+    <String>Order</String>
+    <String>139</String>
+    <String>1</String>
+    <String>Calendar</String>
+    <String>140</String>
+    <String>1</String>
+    <String>Calendar</String>
+    <String>141</String>
+    <String>1</String>
+    <String>Calendar</String>
+    <String>142</String>
+    <String>1</String>
+    <String>Calendar</String>
+    <String>143</String>
+    <String>1</String>
+    <String>Calendar</String>
+    <String>144</String>
+    <String>1</String>
+    <String>Calendar</String>
+  </FieldSrcTables>
+  <TableViewData></TableViewData>
+  <Bookmarks></Bookmarks>
+  <SavedByVersion>12.10.0.0</SavedByVersion>
+  <ForceBackEndMacroExecution>false</ForceBackEndMacroExecution>
+  <FieldTags>
+    <ScriptBased>
+      <FieldTagData>
+        <Tag>$key</Tag>
+        <FieldNames>
+          <String>$Field</String>
+          <String>$Table</String>
+          <String>%ReferralPartnerId</String>
+          <String>%ContactId</String>
+          <String>%ProductId</String>
+          <String>Order Date</String>
+        </FieldNames>
+      </FieldTagData>
+      <FieldTagData>
+        <Tag>$hidden</Tag>
+        <FieldNames>
+          <String>$Field</String>
+          <String>$Table</String>
+          <String>$Rows</String>
+          <String>$Fields</String>
+          <String>$FieldNo</String>
+          <String>$Info</String>
+        </FieldNames>
+      </FieldTagData>
+      <FieldTagData>
+        <Tag>$system</Tag>
+        <FieldNames>
+          <String>$Field</String>
+          <String>$Table</String>
+          <String>$Rows</String>
+          <String>$Fields</String>
+          <String>$FieldNo</String>
+          <String>$Info</String>
+        </FieldNames>
+      </FieldTagData>
+      <FieldTagData>
+        <Tag>$ascii</Tag>
+        <FieldNames>
+          <String>$Field</String>
+          <String>$Table</String>
+          <String>$Info</String>
+          <String>Company.Company</String>
+          <String>Company.Main Contact First Name</String>
+          <String>Company.Main Contact Last Name</String>
+          <String>Company.Company Name</String>
+          <String>Company.Street Address 1</String>
+          <String>Company.Street Address 2</String>
+          <String>Company.City</String>
+          <String>Company.State</String>
+          <String>Company.Country</String>
+          <String>Company.Postal Code</String>
+          <String>Company.Zip Four 1</String>
+          <String>Company.Website</String>
+          <String>Company.Email</String>
+          <String>Company.Tags</String>
+          <String>ReferalPartner.Referral Partner Name</String>
+          <String>ReferalPartner.Referral Partner Code</String>
+          <String>ReferalPartner.Parent</String>
+          <String>Contact.Last Name</String>
+          <String>Contact.Spouse Name</String>
+          <String>Contact.Date(Birthday)</String>
+          <String>Contact.Email</String>
+          <String>Contact.Email Address 2</String>
+          <String>Contact.Email Address 3</String>
+          <String>Contact.Zip Four</String>
+          <String>Contact.Country</String>
+          <String>Contact.Street Address 2 (Shipping)</String>
+          <String>Contact.City (Shipping)</String>
+          <String>Contact.State (Shipping)</String>
+          <String>Contact.Zip Four (Shipping)</String>
+          <String>Contact.Country (Shipping)</String>
+          <String>Contact.Twitter</String>
+          <String>Contact.Facebook</String>
+          <String>Contact.LinkedIn</String>
+          <String>Contact.Street Address 2 (Optional)</String>
+          <String>Contact.City (Optional)</String>
+          <String>Contact.State (Optional)</String>
+          <String>Contact.Zip Four (Optional)</String>
+          <String>Contact.Country (Optional)</String>
+          <String>Contact.Person Type</String>
+          <String>Contact.Website</String>
+          <String>Contact.SSN</String>
+          <String>Contact.Last 4 SSN</String>
+          <String>Contact.Middle Name</String>
+          <String>Contact.Nickname</String>
+          <String>Contact.Username</String>
+          <String>Contact.Assistant Name</String>
+          <String>Contact.Assistant Phone</String>
+          <String>Contact.Title</String>
+          <String>Contact.Suffix</String>
+          <String>Contact.Anniversary</String>
+          <String>Contact.Created By</String>
+          <String>Contact.Date Created</String>
+          <String>Contact.Last Updated</String>
+          <String>Contact.Language</String>
+          <String>Contact.Time Zone</String>
+          <String>Contact.Owner</String>
+          <String>Contact.Lead Source</String>
+          <String>Contact.Lead Source Category</String>
+          <String>Contact.Referral Code</String>
+          <String>Contact.Landlord Law Newsletter</String>
+          <String>Contact.Add Method</String>
+          <String>Contact.Add URL</String>
+          <String>Contact.IP Address</String>
+          <String>Contact.Name 1</String>
+          <String>Contact.Status</String>
+          <String>Contact.Verified</String>
+          <String>Contact.Drupal Role</String>
+          <String>Contact.Membership Product Name</String>
+          <String>Contact.Next IS Bill Date</String>
+          <String>Contact.Date for plus this countdown timer</String>
+          <String>Contact.Send why are you unhappy email</String>
+          <String>Contact.Follow up</String>
+          <String>Contact.IPAddress</String>
+          <String>Contact.Referred Friend's Name</String>
+          <String>Contact.Referred Friend's Email</String>
+          <String>Contact.NPS Comments</String>
+          <String>Contact.Veggie diet?</String>
+          <String>Contact.Gluten free</String>
+          <String>Contact.Diary free</String>
+          <String>Contact.Lactose free</String>
+          <String>Contact.Nut Allergy</String>
+          <String>Contact.Special Diet Notes:</String>
+          <String>Contact.Disability / health issue</String>
+          <String>Contact.Moodle Username</String>
+          <String>Contact.Date for attendance note</String>
+          <String>Contact.Attendance Note Text</String>
+          <String>Product Name</String>
+          <String>Sku</String>
+          <String>Product Status</String>
+          <String>Product Category</String>
+          <String>Order Type</String>
+          <String>Promo Code</String>
+          <String>Order Title</String>
+          <String>Serial</String>
+          <String>Quater</String>
+        </FieldNames>
+      </FieldTagData>
+      <FieldTagData>
+        <Tag>$text</Tag>
+        <FieldNames>
+          <String>$Field</String>
+          <String>$Table</String>
+          <String>$Info</String>
+          <String>Company.Company</String>
+          <String>Company.Main Contact First Name</String>
+          <String>Company.Main Contact Last Name</String>
+          <String>Company.Company Name</String>
+          <String>Company.Street Address 1</String>
+          <String>Company.Street Address 2</String>
+          <String>Company.City</String>
+          <String>Company.State</String>
+          <String>Company.Country</String>
+          <String>Company.Postal Code</String>
+          <String>Company.Zip Four 1</String>
+          <String>Company.Website</String>
+          <String>Company.Email</String>
+          <String>Company.Tags</String>
+          <String>ReferalPartner.Referral Partner Name</String>
+          <String>ReferalPartner.Referral Partner Code</String>
+          <String>ReferalPartner.Parent</String>
+          <String>Contact.Last Name</String>
+          <String>Contact.Spouse Name</String>
+          <String>Contact.Date(Birthday)</String>
+          <String>Contact.Email</String>
+          <String>Contact.Email Address 2</String>
+          <String>Contact.Email Address 3</String>
+          <String>Contact.Zip Four</String>
+          <String>Contact.Country</String>
+          <String>Contact.Street Address 2 (Shipping)</String>
+          <String>Contact.City (Shipping)</String>
+          <String>Contact.State (Shipping)</String>
+          <String>Contact.Zip Four (Shipping)</String>
+          <String>Contact.Country (Shipping)</String>
+          <String>Contact.Twitter</String>
+          <String>Contact.Facebook</String>
+          <String>Contact.LinkedIn</String>
+          <String>Contact.Street Address 2 (Optional)</String>
+          <String>Contact.City (Optional)</String>
+          <String>Contact.State (Optional)</String>
+          <String>Contact.Zip Four (Optional)</String>
+          <String>Contact.Country (Optional)</String>
+          <String>Contact.Person Type</String>
+          <String>Contact.Website</String>
+          <String>Contact.SSN</String>
+          <String>Contact.Last 4 SSN</String>
+          <String>Contact.Middle Name</String>
+          <String>Contact.Nickname</String>
+          <String>Contact.Username</String>
+          <String>Contact.Assistant Name</String>
+          <String>Contact.Assistant Phone</String>
+          <String>Contact.Title</String>
+          <String>Contact.Suffix</String>
+          <String>Contact.Anniversary</String>
+          <String>Contact.Created By</String>
+          <String>Contact.Date Created</String>
+          <String>Contact.Last Updated</String>
+          <String>Contact.Language</String>
+          <String>Contact.Time Zone</String>
+          <String>Contact.Owner</String>
+          <String>Contact.Lead Source</String>
+          <String>Contact.Lead Source Category</String>
+          <String>Contact.Referral Code</String>
+          <String>Contact.Landlord Law Newsletter</String>
+          <String>Contact.Add Method</String>
+          <String>Contact.Add URL</String>
+          <String>Contact.IP Address</String>
+          <String>Contact.Name 1</String>
+          <String>Contact.Status</String>
+          <String>Contact.Verified</String>
+          <String>Contact.Drupal Role</String>
+          <String>Contact.Membership Product Name</String>
+          <String>Contact.Feedback / testimonial</String>
+          <String>Contact.Next IS Bill Date</String>
+          <String>Contact.Date for plus this countdown timer</String>
+          <String>Contact.Send why are you unhappy email</String>
+          <String>Contact.Follow up</String>
+          <String>Contact.IPAddress</String>
+          <String>Contact.Referred Friend's Name</String>
+          <String>Contact.Referred Friend's Email</String>
+          <String>Contact.NPS Comments</String>
+          <String>Contact.Veggie diet?</String>
+          <String>Contact.Gluten free</String>
+          <String>Contact.Diary free</String>
+          <String>Contact.Lactose free</String>
+          <String>Contact.Nut Allergy</String>
+          <String>Contact.Special Diet Notes:</String>
+          <String>Contact.Disability / health issue</String>
+          <String>Contact.Moodle Username</String>
+          <String>Contact.Date for attendance note</String>
+          <String>Contact.Attendance Note Text</String>
+          <String>Product Name</String>
+          <String>Sku</String>
+          <String>Product Status</String>
+          <String>Product Category</String>
+          <String>Order Type</String>
+          <String>Promo Code</String>
+          <String>Order Title</String>
+          <String>Serial</String>
+          <String>Quater</String>
+        </FieldNames>
+      </FieldTagData>
+      <FieldTagData>
+        <Tag>$numeric</Tag>
+        <FieldNames>
+          <String>$Rows</String>
+          <String>$Fields</String>
+          <String>$FieldNo</String>
+          <String>%CampanyId</String>
+          <String>Company.Company Action</String>
+          <String>Company.Date Created</String>
+          <String>%ReferralPartnerId</String>
+          <String>ReferalPartner.ContactId</String>
+          <String>%ContactId</String>
+          <String>Contact.OwnerID</String>
+          <String>Contact.Lead Score</String>
+          <String>%ProductId</String>
+          <String>Price</String>
+          <String>%OrderId</String>
+          <String>Order Date</String>
+          <String>Order Total</String>
+          <String>Day</String>
+          <String>Year</String>
+          <String>Month</String>
+          <String>Week</String>
+          <String>MonthYear</String>
+        </FieldNames>
+      </FieldTagData>
+      <FieldTagData>
+        <Tag>$integer</Tag>
+        <FieldNames>
+          <String>$Rows</String>
+          <String>$Fields</String>
+          <String>$FieldNo</String>
+          <String>%CampanyId</String>
+          <String>Company.Company Action</String>
+          <String>Company.Date Created</String>
+          <String>%ReferralPartnerId</String>
+          <String>ReferalPartner.ContactId</String>
+          <String>%ContactId</String>
+          <String>Contact.OwnerID</String>
+          <String>Contact.Lead Score</String>
+          <String>%ProductId</String>
+          <String>%OrderId</String>
+          <String>Order Date</String>
+          <String>Day</String>
+          <String>Year</String>
+          <String>Month</String>
+          <String>Week</String>
+          <String>MonthYear</String>
+        </FieldNames>
+      </FieldTagData>
+      <FieldTagData>
+        <Tag>$timestamp</Tag>
+        <FieldNames>
+          <String>Company.Date Created</String>
+          <String>Order Date</String>
+          <String>MonthYear</String>
+        </FieldNames>
+      </FieldTagData>
+      <FieldTagData>
+        <Tag>$date</Tag>
+        <FieldNames>
+          <String>Company.Date Created</String>
+          <String>Order Date</String>
+          <String>MonthYear</String>
+        </FieldNames>
+      </FieldTagData>
+    </ScriptBased>
+    <Interactive></Interactive>
+  </FieldTags>
+  <FieldComments></FieldComments>
+  <TableComments></TableComments>
+  <CreatePrjFolder>false</CreatePrjFolder>
+  <LinkedTables></LinkedTables>
+  <AppObjectEntries></AppObjectEntries>
+  <GenericDimensions></GenericDimensions>
+  <GenericMeasures></GenericMeasures>
+  <GenericBookmarks></GenericBookmarks>
+  <ConnectionInfo></ConnectionInfo>
+  <GenericDerivedDefinitions></GenericDerivedDefinitions>
+  <GenericDerivedFields></GenericDerivedFields>
+</DocInternals>

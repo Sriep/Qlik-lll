@@ -1,0 +1,37 @@
+﻿///$tab Main
+SET ThousandSep=',';
+SET DecimalSep='.';
+SET MoneyThousandSep=',';
+SET MoneyDecimalSep='.';
+SET MoneyFormat='£#,##0.00;-£#,##0.00';
+SET TimeFormat='hh:mm:ss';
+SET DateFormat='DD/MM/YYYY';
+SET TimestampFormat='DD/MM/YYYY hh:mm:ss[.fff]';
+SET FirstWeekDay=0;
+SET BrokenWeeks=0;
+SET ReferenceDay=4;
+SET FirstMonthOfYear=1;
+SET CollationLocale='en-GB';
+SET MonthNames='Jan;Feb;Mar;Apr;May;Jun;Jul;Aug;Sep;Oct;Nov;Dec';
+SET LongMonthNames='January;February;March;April;May;June;July;August;September;October;November;December';
+SET DayNames='Mon;Tue;Wed;Thu;Fri;Sat;Sun';
+SET LongDayNames='Monday;Tuesday;Wednesday;Thursday;Friday;Saturday;Sunday';
+
+///$tab import
+Directory;
+Campaign: LOAD * FROM Data\Campaign.qvd(qvd);
+Contact: LOAD * FROM Data\Contact.qvd(qvd);
+ReferalPartner: LOAD * FROM Data\ReferalPartner.qvd(qvd);
+Order: LOAD * FROM Data\Order.qvd(qvd);
+Product: LOAD * FROM Data\Product.qvd(qvd);
+Template: LOAD * FROM Data\Template.qvd(qvd);
+Visitor: LOAD * FROM Data\Visitor.qvd(qvd);
+Calendar: LOAD * FROM Data\Calendar.qvd(qvd);
+///$tab Bookmarks
+Bookmarks:
+LOAD * INLINE [
+    %BookmarkId, Bookmark Name
+    BM03, Landlord Membership
+    BM04, Landlord Law
+];
+
