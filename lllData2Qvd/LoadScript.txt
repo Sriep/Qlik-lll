@@ -30,6 +30,9 @@ set HidPrefix = '^';
 
 set qvdPath = 'C:\Users\Piers\Documents\Tessa\Qlik\Data';
 set dataDir = 'C:\Users\Piers\Documents\Tessa\Qlik\Data';
+
+// https://community.qlik.com/docs/DOC-3836
+set MonthDiff = Num(((year($2) * 12) + month($2)) - (((year($1) * 12) + month($1))));
 ///$tab campaingn
 $(qvdCampaign):
 QUALIFY *;
@@ -326,10 +329,10 @@ STORE $(qvdProduct) into $(qvdPath)/$(qvdProduct).qvd(qvd);
 
 
 ///$tab order
-MapMembershipMonths:
-Mapping Load %ProductId, [Membership Months] Resident $(qvdProduct);
+//MapMembershipMonths:
+//Mapping Load %ProductId, [Membership Months] Resident $(qvdProduct);
 
-$(qvdOrder):
+$(qvdOrder)_tmp:
 LOAD 
 	Id as %OrderId, 
 	ContactId as %ContactId,
@@ -340,8 +343,8 @@ LOAD
 	[Order Title], 
 	[Order Date], 	
 	Serial, 
-	KeepChar([Order Total], '0123456789.') as [Order Total], 
-	ApplyMap('MapMembershipMonths', [Product Ids], null()) as [Product Membership]
+	KeepChar([Order Total], '0123456789.') as [Order Total] 
+	//ApplyMap('MapMembershipMonths', [Product Ids], 0) as [Product Membership]
 	/*
 	//Repeat of Id
 		[Order Id], 	
@@ -407,28 +410,30 @@ LOAD
 	*/
 FROM [$(dataDir)\$(qvdOrder).csv] (txt, codepage is 1252, embedded labels, delimiter is ',', msq);
 
-//drop table $(qvdOrder);
-
-temp:
+// Add a field to show number how many months since a customers first order a subsequent order is placed
+OD_tmp:
 LOAD
 	%ContactId,
-	min([Order Date]) as maxOD	
-Resident $(qvdOrder)
+	min([Order Date]) as [First Order Date]	
+Resident $(qvdOrder)_tmp
 Group By %ContactId;
 
-
-qvdOrder:
-Left Join($(qvdOrder))
+$(qvdOrder)_tmp:
+Left Join($(qvdOrder)_tmp)
 LOAD 	
 	 *
-Resident $(temp);
+Resident OD_tmp;
+drop table OD_tmp;
+
+$(qvdOrder):
+LOAD
+	*,
+	$(MonthDiff([First Order Date], [Order Date])) as [Months Since Fist Order]	
+Resident $(qvdOrder)_tmp;
+drop table $(qvdOrder)_tmp;
 
 STORE $(qvdOrder) into $(qvdPath)/$(qvdOrder).qvd(qvd);
-
-
-
-
-
+	
 
 
 
@@ -507,37 +512,46 @@ order by CalDate asc;
 drop Tables DataRange, TempCalDate;
 STORE Calendar into $(qvdPath)/Calendar.qvd(qvd);
 ///$tab Membership
-/*
-MembershipOrders:
-Load
-	 %OrderId,
-	 %ContactId,
-	[Order Date] as MDate,
-	[Product Membership] as PMem
-Resident  $(qvdOrder)
-where ([Product Membership]	> 0);
+TempMonths:
+LOAD 
+	%OrderId,
+	%ProductId,
+	[Order Date],
+	Date(Monthstart(Date([Order Date])),'MM/YYYY') as Month_temp
+Resident $(qvdOrder);
 
-drop field %OrderId from MembershipOrders;
+Left Join(TempMonths)
+LOAD *  Resident $(qvdProduct);
+Drop fields %ProductId, [Order Date] from TempMonths;
 
-CC:
-Load
-	%ContactId
-Resident $(qvdContact);
-	
+for row = 0 to NoOfRows('TempMonths')-1
+	Let numMonths = peek('Membership Months', $(row), 'TempMonths');	
+	If not IsNull(numMonths) Then
+		If $(numMonths) >0 Then
+			Membership_temp:
+			LOAD
+				peek('%OrderId',$(row), 'TempMonths') as %OrderId,
+				Date(AddMonths(peek('Month_temp',$(row), 'TempMonths'),RecNo()-1),'MM/YYYY') as MMonth
+			AutoGenerate $(numMonths);
+		End if; 
+	End if;
+Next row;
 
-Join(CC)
-LOAD Distinct 	
-	//%ContactId as CI,
-	[Order Date] as OD
-Resident 'Calendar';
+Membership:
+LOAD 
+		%OrderId,
+		MMonth as [Membership Month]
+Resident Membership_temp	
+where MMonth < date(today(0),'MM/YYYY');	
 
-Right Join(MembershipOrders)
-MM:
-Load distinct
-	%ContactId,
-	OD
-Resident CC
-where (OD = MDate);
+drop Table Membership_temp;
 
-drop table CC;
-*/
+Drop Table TempMonths;
+STORE Membership into $(qvdPath)/Membership.qvd(qvd);
+//DROP Table $(qvdContact);
+//DROP Table $(qvdOrder);
+//DROP Table $(qvdProduct);
+//DROP Table Membership
+
+
+ 

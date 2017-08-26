@@ -27,6 +27,7 @@ Product: LOAD * FROM Data\Product.qvd(qvd);
 Template: LOAD * FROM Data\Template.qvd(qvd);
 Visitor: LOAD * FROM Data\Visitor.qvd(qvd);
 Calendar: LOAD * FROM Data\Calendar.qvd(qvd);
+Membership: LOAD * FROM Data\Membership.qvd(qvd);
 ///$tab Bookmarks
 Bookmarks:
 LOAD * INLINE [

@@ -3,7 +3,7 @@
   <SaveCompressed>0</SaveCompressed>
   <UsePassiveFtp>false</UsePassiveFtp>
   <IgnoreInfoLost>false</IgnoreInfoLost>
-  <GenerateLogfile>false</GenerateLogfile>
+  <GenerateLogfile>true</GenerateLogfile>
   <OpenPicTimeout>0</OpenPicTimeout>
   <OpenPicCloseOnClick>0</OpenPicCloseOnClick>
   <OpenPicCloseWhenLoaded>0</OpenPicCloseWhenLoaded>
@@ -858,7 +858,7 @@
       <int>3</int>
     </InterOrder>
   </BookmarkSortOrder>
-  <ScriptTabActiveTab>7</ScriptTabActiveTab>
+  <ScriptTabActiveTab>11</ScriptTabActiveTab>
   <ModuleSystemAccessIntended>0</ModuleSystemAccessIntended>
   <InhibitAggressiveQvdCleaning>false</InhibitAggressiveQvdCleaning>
   <Alerts></Alerts>
@@ -1266,7 +1266,13 @@
   <AllowServerObjects>true</AllowServerObjects>
   <AllowServerReports>true</AllowServerReports>
   <TxBuFont></TxBuFont>
-  <breakpointList></breakpointList>
+  <breakpointList>
+    <EditorBreakpoint>
+      <bufferName></bufferName>
+      <lineIx>526</lineIx>
+      <Enabled>false</Enabled>
+    </EditorBreakpoint>
+  </breakpointList>
   <IdleSecondsBeforeClose>0</IdleSecondsBeforeClose>
   <ElapsedSecondsBeforeClose>0</ElapsedSecondsBeforeClose>
   <AllowServerCharts>true</AllowServerCharts>
@@ -1304,10 +1310,10 @@
   <Extensions></Extensions>
   <ExtensionDescriptions></ExtensionDescriptions>
   <AllowServerAnnotation>true</AllowServerAnnotation>
-  <LastReloadTimeAsISOString>2017-08-25T02:52:15.444Z</LastReloadTimeAsISOString>
+  <LastReloadTimeAsISOString>2017-08-25T23:40:33.835Z</LastReloadTimeAsISOString>
   <AppProperties>
     <Title></Title>
-    <LastReloadTime>2017-08-25T02:52:15.444Z</LastReloadTime>
+    <LastReloadTime>2017-08-25T23:40:33.835Z</LastReloadTime>
     <MigrationHash></MigrationHash>
     <SavedInProductVersion></SavedInProductVersion>
     <Thumbnail></Thumbnail>
