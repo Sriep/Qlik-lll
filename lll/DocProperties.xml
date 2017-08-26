@@ -1307,10 +1307,10 @@
   <Extensions></Extensions>
   <ExtensionDescriptions></ExtensionDescriptions>
   <AllowServerAnnotation>true</AllowServerAnnotation>
-  <LastReloadTimeAsISOString>2017-08-23T13:50:08.001Z</LastReloadTimeAsISOString>
+  <LastReloadTimeAsISOString>2017-08-23T16:36:51.675Z</LastReloadTimeAsISOString>
   <AppProperties>
     <Title></Title>
-    <LastReloadTime>2017-08-23T13:50:08.001Z</LastReloadTime>
+    <LastReloadTime>2017-08-23T16:36:51.675Z</LastReloadTime>
     <MigrationHash></MigrationHash>
     <SavedInProductVersion></SavedInProductVersion>
     <Thumbnail></Thumbnail>
@@ -1319,6 +1319,6 @@
   <FavoriteVariables></FavoriteVariables>
   <SearchFields></SearchFields>
   <GreynessFields></GreynessFields>
-  <CompatibelPivotCalcMode>false</CompatibelPivotCalcMode>
+  <CompatibelPivotCalcMode>true</CompatibelPivotCalcMode>
   <CreateSearchIndexOnReload>false</CreateSearchIndexOnReload>
 </DocProperties>

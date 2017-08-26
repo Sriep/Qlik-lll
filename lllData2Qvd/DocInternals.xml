@@ -8,6 +8,7 @@
     <bool>false</bool>
     <bool>false</bool>
     <bool>false</bool>
+    <bool>false</bool>
   </AlwaysLoose>
   <FieldSrcTables>
     <String>6</String>
@@ -87,9 +88,10 @@
     <String>1</String>
     <String>ReferalPartner</String>
     <String>31</String>
-    <String>2</String>
+    <String>3</String>
     <String>Contact</String>
     <String>Order</String>
+    <String>temp</String>
     <String>32</String>
     <String>1</String>
     <String>Contact</String>
@@ -393,7 +395,7 @@
     <String>Product</String>
     <String>132</String>
     <String>1</String>
-    <String>Order</String>
+    <String>Product</String>
     <String>133</String>
     <String>1</String>
     <String>Order</String>
@@ -404,24 +406,24 @@
     <String>1</String>
     <String>Order</String>
     <String>136</String>
+    <String>1</String>
+    <String>Order</String>
+    <String>137</String>
     <String>2</String>
     <String>Order</String>
     <String>Calendar</String>
-    <String>137</String>
-    <String>1</String>
-    <String>Order</String>
     <String>138</String>
     <String>1</String>
     <String>Order</String>
     <String>139</String>
     <String>1</String>
-    <String>Calendar</String>
+    <String>Order</String>
     <String>140</String>
     <String>1</String>
-    <String>Calendar</String>
+    <String>Order</String>
     <String>141</String>
     <String>1</String>
-    <String>Calendar</String>
+    <String>temp</String>
     <String>142</String>
     <String>1</String>
     <String>Calendar</String>
@@ -429,6 +431,15 @@
     <String>1</String>
     <String>Calendar</String>
     <String>144</String>
+    <String>1</String>
+    <String>Calendar</String>
+    <String>145</String>
+    <String>1</String>
+    <String>Calendar</String>
+    <String>146</String>
+    <String>1</String>
+    <String>Calendar</String>
+    <String>147</String>
     <String>1</String>
     <String>Calendar</String>
   </FieldSrcTables>
@@ -694,9 +705,12 @@
           <String>Contact.Lead Score</String>
           <String>%ProductId</String>
           <String>Price</String>
+          <String>Membership Months</String>
           <String>%OrderId</String>
           <String>Order Date</String>
           <String>Order Total</String>
+          <String>Product Membership</String>
+          <String>maxOD</String>
           <String>Day</String>
           <String>Year</String>
           <String>Month</String>
@@ -719,8 +733,11 @@
           <String>Contact.OwnerID</String>
           <String>Contact.Lead Score</String>
           <String>%ProductId</String>
+          <String>Membership Months</String>
           <String>%OrderId</String>
           <String>Order Date</String>
+          <String>Product Membership</String>
+          <String>maxOD</String>
           <String>Day</String>
           <String>Year</String>
           <String>Month</String>
@@ -733,6 +750,7 @@
         <FieldNames>
           <String>Company.Date Created</String>
           <String>Order Date</String>
+          <String>maxOD</String>
           <String>MonthYear</String>
         </FieldNames>
       </FieldTagData>
@@ -741,6 +759,7 @@
         <FieldNames>
           <String>Company.Date Created</String>
           <String>Order Date</String>
+          <String>maxOD</String>
           <String>MonthYear</String>
         </FieldNames>
       </FieldTagData>

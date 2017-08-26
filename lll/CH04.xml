@@ -630,12 +630,10 @@
   <Dimensions>
     <ChartDimensionDataDef>
       <PseudoDef>
-        <Name>Contact.First Name</Name>
+        <Name>Contact.Name</Name>
         <Type>PRESENT</Type>
       </PseudoDef>
-      <Title>
-        <v>Top ten customers</v>
-      </Title>
+      <Title></Title>
       <TotalString></TotalString>
       <SortCriteria>
         <SortByState>1</SortByState>
@@ -787,9 +785,7 @@
       <MaxStringLength>0</MaxStringLength>
       <AttributeExpressions></AttributeExpressions>
       <PageBreaks>NO_BREAKS</PageBreaks>
-      <MaxNumShown>
-        <v>5</v>
-      </MaxNumShown>
+      <MaxNumShown></MaxNumShown>
       <Spacing></Spacing>
       <ColWidth>300</ColWidth>
       <OverrideGroupSort>false</OverrideGroupSort>
@@ -802,7 +798,7 @@
           <v>10</v>
         </OtherCounted>
         <OtherLimit>
-          <v>0.05</v>
+          <v>5%</v>
         </OtherLimit>
         <OtherLimitMode>OTHER_GT_LIMIT</OtherLimitMode>
         <SuppressOther>true</SuppressOther>
@@ -2483,8 +2479,8 @@
     </DefaultExprCellVariations>
     <StraightShowOthers>false</StraightShowOthers>
     <InterFieldSortOrder>
-      <int>0</int>
       <int>1</int>
+      <int>0</int>
     </InterFieldSortOrder>
     <ExpressionPosition>255</ExpressionPosition>
     <NumberOfLeftDimensions>255</NumberOfLeftDimensions>
@@ -2517,7 +2513,7 @@
       <ExpansionData>
         <ExcludeList>false</ExcludeList>
         <Pos>
-          <DimName>Contact.First Name</DimName>
+          <DimName>Contact.Name</DimName>
           <ElemNo></ElemNo>
           <ElemValues></ElemValues>
         </Pos>

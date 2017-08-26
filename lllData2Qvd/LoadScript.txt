@@ -317,11 +317,18 @@ LOAD
 	Sku, 
 	KeepChar(Price, '0123456789.') as Price,
 	[Product Status], 
-	[Product Category]
+	[Product Category],
+	[Membership Months]
 FROM [$(dataDir)\$(qvdProduct).csv] (txt, codepage is 1252, embedded labels, delimiter is ',', msq);
 STORE $(qvdProduct) into $(qvdPath)/$(qvdProduct).qvd(qvd);
 //drop table $(qvdProduct);
+
+
+
 ///$tab order
+MapMembershipMonths:
+Mapping Load %ProductId, [Membership Months] Resident $(qvdProduct);
+
 $(qvdOrder):
 LOAD 
 	Id as %OrderId, 
@@ -333,7 +340,8 @@ LOAD
 	[Order Title], 
 	[Order Date], 	
 	Serial, 
-	KeepChar([Order Total], '0123456789.') as [Order Total] 
+	KeepChar([Order Total], '0123456789.') as [Order Total], 
+	ApplyMap('MapMembershipMonths', [Product Ids], null()) as [Product Membership]
 	/*
 	//Repeat of Id
 		[Order Id], 	
@@ -398,8 +406,31 @@ LOAD
 		[Contact: Attendance Note Text]
 	*/
 FROM [$(dataDir)\$(qvdOrder).csv] (txt, codepage is 1252, embedded labels, delimiter is ',', msq);
-STORE $(qvdOrder) into $(qvdPath)/$(qvdOrder).qvd(qvd);
+
 //drop table $(qvdOrder);
+
+temp:
+LOAD
+	%ContactId,
+	min([Order Date]) as maxOD	
+Resident $(qvdOrder)
+Group By %ContactId;
+
+
+qvdOrder:
+Left Join($(qvdOrder))
+LOAD 	
+	 *
+Resident $(temp);
+
+STORE $(qvdOrder) into $(qvdPath)/$(qvdOrder).qvd(qvd);
+
+
+
+
+
+
+
 
 ///$tab template
 $(qvdTemplate):
@@ -475,3 +506,38 @@ order by CalDate asc;
 
 drop Tables DataRange, TempCalDate;
 STORE Calendar into $(qvdPath)/Calendar.qvd(qvd);
+///$tab Membership
+/*
+MembershipOrders:
+Load
+	 %OrderId,
+	 %ContactId,
+	[Order Date] as MDate,
+	[Product Membership] as PMem
+Resident  $(qvdOrder)
+where ([Product Membership]	> 0);
+
+drop field %OrderId from MembershipOrders;
+
+CC:
+Load
+	%ContactId
+Resident $(qvdContact);
+	
+
+Join(CC)
+LOAD Distinct 	
+	//%ContactId as CI,
+	[Order Date] as OD
+Resident 'Calendar';
+
+Right Join(MembershipOrders)
+MM:
+Load distinct
+	%ContactId,
+	OD
+Resident CC
+where (OD = MDate);
+
+drop table CC;
+*/

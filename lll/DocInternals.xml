@@ -434,7 +434,7 @@
     <String>Product</String>
     <String>144</String>
     <String>1</String>
-    <String>Template</String>
+    <String>Product</String>
     <String>145</String>
     <String>1</String>
     <String>Template</String>
@@ -455,7 +455,7 @@
     <String>Template</String>
     <String>151</String>
     <String>1</String>
-    <String>Visitor</String>
+    <String>Template</String>
     <String>152</String>
     <String>1</String>
     <String>Visitor</String>
@@ -506,7 +506,7 @@
     <String>Visitor</String>
     <String>168</String>
     <String>1</String>
-    <String>Calendar</String>
+    <String>Visitor</String>
     <String>169</String>
     <String>1</String>
     <String>Calendar</String>
@@ -524,8 +524,11 @@
     <String>Calendar</String>
     <String>174</String>
     <String>1</String>
-    <String>Bookmarks</String>
+    <String>Calendar</String>
     <String>175</String>
+    <String>1</String>
+    <String>Bookmarks</String>
+    <String>176</String>
     <String>1</String>
     <String>Bookmarks</String>
   </FieldSrcTables>
@@ -6924,6 +6927,7 @@
           <String>Order Date</String>
           <String>Order Total</String>
           <String>Price</String>
+          <String>Membership Months</String>
           <String>%TemplateId</String>
           <String>%VisitorId</String>
           <String>Visitor.Last Visit Date</String>
@@ -6954,6 +6958,7 @@
           <String>%OrderId</String>
           <String>%ProductId</String>
           <String>Order Date</String>
+          <String>Membership Months</String>
           <String>%TemplateId</String>
           <String>%VisitorId</String>
           <String>Visitor.Last Visit Date</String>

@@ -47,7 +47,7 @@
         <DropShadow>false</DropShadow>
       </CaptionFont>
       <Name>
-        <v>Customer</v>
+        <v>Bookmark Name</v>
       </Name>
       <Detached>false</Detached>
       <AllowMinimize>false</AllowMinimize>
@@ -67,7 +67,7 @@
       <HelpText></HelpText>
       <ObjectId></ObjectId>
       <ShrinkFrameToData>true</ShrinkFrameToData>
-      <ShowCaption>true</ShowCaption>
+      <ShowCaption>false</ShowCaption>
       <MultiLine>0</MultiLine>
       <ActiveBgColor>
         <Mode>COLORAREA_SOLID</Mode>
@@ -235,7 +235,7 @@
         <ExtraBorderSpace16>0</ExtraBorderSpace16>
       </Right>
     </Borders>
-    <MultiColumn>false</MultiColumn>
+    <MultiColumn>true</MultiColumn>
     <OrderByRow>false</OrderByRow>
     <HideExcluded>false</HideExcluded>
     <SelectionStyle>SS_USER_PREF</SelectionStyle>
@@ -256,12 +256,10 @@
     <CellBorders>false</CellBorders>
   </Layout>
   <Def>
-    <Name>Contact.Name</Name>
+    <Name>Bookmark Name</Name>
     <Type>PRESENT</Type>
   </Def>
-  <Title>
-    <v>Customer</v>
-  </Title>
+  <Title></Title>
   <PrintSettings>
     <Landscape>true</Landscape>
     <PrintCurrentSelectionPosition>BOTTOM_OF_LAST_PAGE</PrintCurrentSelectionPosition>
