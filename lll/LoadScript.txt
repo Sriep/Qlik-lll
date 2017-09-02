@@ -19,15 +19,16 @@ SET LongDayNames='Monday;Tuesday;Wednesday;Thursday;Friday;Saturday;Sunday';
 
 ///$tab import
 Directory;
-Campaign: LOAD * FROM Data\Campaign.qvd(qvd);
+//Campaign: LOAD * FROM Data\Campaign.qvd(qvd);
 Contact: LOAD * FROM Data\Contact.qvd(qvd);
-ReferalPartner: LOAD * FROM Data\ReferalPartner.qvd(qvd);
+//ReferalPartner: LOAD * FROM Data\ReferalPartner.qvd(qvd);
 Order: LOAD * FROM Data\Order.qvd(qvd);
 Product: LOAD * FROM Data\Product.qvd(qvd);
-Template: LOAD * FROM Data\Template.qvd(qvd);
-Visitor: LOAD * FROM Data\Visitor.qvd(qvd);
+//Template: LOAD * FROM Data\Template.qvd(qvd);
+//Visitor: LOAD * FROM Data\Visitor.qvd(qvd);
 Calendar: LOAD * FROM Data\Calendar.qvd(qvd);
-Membership: LOAD * FROM Data\Membership.qvd(qvd);
+//Membership: LOAD * FROM Data\Membership.qvd(qvd);
+ContactTags: LOAD * FROM Data\ContactTags.qvd(qvd);
 ///$tab Bookmarks
 Bookmarks:
 LOAD * INLINE [

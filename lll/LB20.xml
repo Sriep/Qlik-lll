@@ -1,4 +1,4 @@
-﻿<TextObjectProperties>
+﻿<ListBoxProperties>
   <Layout>
     <Frame>
       <BorderWidth>0</BorderWidth>
@@ -10,22 +10,31 @@
         <FillPattern>COLORAREA_PATTERN1</FillPattern>
         <PrimaryCol>
           <Col>
-            <Red>4</Red>
-            <Green>108</Green>
-            <Blue>193</Blue>
+            <Red>232</Red>
+            <Green>232</Green>
+            <Blue>232</Blue>
             <Alpha>255</Alpha>
           </Col>
           <IsCalculated>false</IsCalculated>
           <ColorExpr></ColorExpr>
         </PrimaryCol>
-        <SecondaryCol></SecondaryCol>
+        <SecondaryCol>
+          <Col>
+            <Red>200</Red>
+            <Green>200</Green>
+            <Blue>200</Blue>
+            <Alpha>255</Alpha>
+          </Col>
+          <IsCalculated>false</IsCalculated>
+          <ColorExpr></ColorExpr>
+        </SecondaryCol>
         <Alpha>255</Alpha>
       </Color>
       <Font>
-        <FontName>Arial</FontName>
-        <PointSize1000>9000</PointSize1000>
+        <FontName>Tahoma</FontName>
+        <PointSize1000>8000</PointSize1000>
         <Underline>false</Underline>
-        <Bold>true</Bold>
+        <Bold>false</Bold>
         <Italic>false</Italic>
         <DropShadow>false</DropShadow>
       </Font>
@@ -37,16 +46,18 @@
         <Italic>false</Italic>
         <DropShadow>false</DropShadow>
       </CaptionFont>
-      <Name></Name>
+      <Name>
+        <v>Tags</v>
+      </Name>
       <Detached>false</Detached>
       <AllowMinimize>false</AllowMinimize>
       <AutoMinimize>false</AutoMinimize>
       <AllowMaximize>false</AllowMaximize>
-      <AllowInfo>false</AllowInfo>
+      <AllowInfo>true</AllowInfo>
       <PrintIcon>false</PrintIcon>
       <CopyIcon>false</CopyIcon>
       <XLIcon>false</XLIcon>
-      <SearchIcon>false</SearchIcon>
+      <SearchIcon>true</SearchIcon>
       <SelectPossibleIcon>false</SelectPossibleIcon>
       <SelectExcludedIcon>false</SelectExcludedIcon>
       <SelectAllIcon>false</SelectAllIcon>
@@ -56,7 +67,7 @@
       <HelpText></HelpText>
       <ObjectId></ObjectId>
       <ShrinkFrameToData>true</ShrinkFrameToData>
-      <ShowCaption>false</ShowCaption>
+      <ShowCaption>true</ShowCaption>
       <MultiLine>0</MultiLine>
       <ActiveBgColor>
         <Mode>COLORAREA_SOLID</Mode>
@@ -203,62 +214,159 @@
       <ExtendedValues></ExtendedValues>
       <StateName></StateName>
     </Frame>
-    <LegacyHelpModeThatHasNoEffectWhatSoEver>false</LegacyHelpModeThatHasNoEffectWhatSoEver>
-    <TextAdjustHorizontal>1</TextAdjustHorizontal>
-    <TextAdjustVertical>4</TextAdjustVertical>
-    <TopMargin>10</TopMargin>
-    <BottomMargin>10</BottomMargin>
-    <LeftMargin>10</LeftMargin>
-    <RightMargin>10</RightMargin>
-    <TextColor>
-      <Mode>COLORAREA_SOLID</Mode>
-      <Luminosity>85</Luminosity>
-      <FillDirection>COLORAREA_HORZ</FillDirection>
-      <FillPattern>COLORAREA_PATTERN1</FillPattern>
-      <PrimaryCol>
-        <Col>
-          <Red>54</Red>
-          <Green>54</Green>
-          <Blue>54</Blue>
-          <Alpha>255</Alpha>
-        </Col>
-        <IsCalculated>false</IsCalculated>
-        <ColorExpr></ColorExpr>
-      </PrimaryCol>
-      <SecondaryCol></SecondaryCol>
-      <Alpha>255</Alpha>
-    </TextColor>
-    <BkgColor>
-      <Mode>COLORAREA_SOLID</Mode>
-      <Luminosity>85</Luminosity>
-      <FillDirection>COLORAREA_HORZ</FillDirection>
-      <FillPattern>COLORAREA_PATTERN1</FillPattern>
-      <PrimaryCol>
-        <Col>
-          <Red>214</Red>
-          <Green>231</Green>
-          <Blue>248</Blue>
-          <Alpha>255</Alpha>
-        </Col>
-        <IsCalculated>false</IsCalculated>
-        <ColorExpr></ColorExpr>
-      </PrimaryCol>
-      <SecondaryCol></SecondaryCol>
-      <Alpha>255</Alpha>
-    </BkgColor>
-    <BkgImageSettings></BkgImageSettings>
-    <BkgMode>BKG_SOLID</BkgMode>
-    <Bmp enctype="base64"></Bmp>
-    <BkgAlpha>0</BkgAlpha>
-    <Text>
-      <v>='Total Sales' &amp; chr(10)
-&amp; num(sum([Order Total]), '£#,##0.0')</v>
-    </Text>
+    <ReadOnly>false</ReadOnly>
+    <NumAdjust>2</NumAdjust>
+    <TextAdjust>0</TextAdjust>
+    <MultiLine>0</MultiLine>
+    <ShowFrequency>false</ShowFrequency>
+    <FrequencyInPercent>false</FrequencyInPercent>
+    <Longest></Longest>
+    <Borders>
+      <Top></Top>
+      <Bottom></Bottom>
+      <Left>
+        <LineStyle>32</LineStyle>
+        <Color></Color>
+        <ExtraBorderSpace16>0</ExtraBorderSpace16>
+      </Left>
+      <Right>
+        <LineStyle>32</LineStyle>
+        <Color></Color>
+        <ExtraBorderSpace16>0</ExtraBorderSpace16>
+      </Right>
+    </Borders>
+    <MultiColumn>false</MultiColumn>
+    <OrderByRow>false</OrderByRow>
+    <HideExcluded>false</HideExcluded>
+    <SelectionStyle>SS_USER_PREF</SelectionStyle>
     <ImageRepresentation></ImageRepresentation>
-    <AllowVerticalScrollBar>false</AllowVerticalScrollBar>
-    <AllowHorizontalScrollBar>false</AllowHorizontalScrollBar>
-    <ActionItems></ActionItems>
+    <SoftLock>false</SoftLock>
+    <ExcludedValuesMode>0</ExcludedValuesMode>
+    <DefaultSearchMode>0</DefaultSearchMode>
+    <SuppressHorizontalScroll>false</SuppressHorizontalScroll>
+    <FixedColumnsCount>-1</FixedColumnsCount>
+    <LayoutDependentPrint>true</LayoutDependentPrint>
+    <PrintAllValues>false</PrintAllValues>
+    <HierarchySeparator>/</HierarchySeparator>
+    <ShowAsTreeView>false</ShowAsTreeView>
+    <CurrentInfoURL></CurrentInfoURL>
+    <SuppressSearchHighlight>false</SuppressSearchHighlight>
+    <TextColor></TextColor>
+    <PreferredTextSearchMode>TEXT_SEARCH_NORMAL</PreferredTextSearchMode>
+    <CellBorders>false</CellBorders>
   </Layout>
-  <PrintSettings></PrintSettings>
-  <UserSized>true</UserSized>
-</TextObjectProperties>
+  <Def>
+    <Name>TagName</Name>
+    <Type>PRESENT</Type>
+  </Def>
+  <Title>
+    <v>Tags</v>
+  </Title>
+  <PrintSettings>
+    <Landscape>true</Landscape>
+    <PrintCurrentSelectionPosition>BOTTOM_OF_LAST_PAGE</PrintCurrentSelectionPosition>
+    <ShowTimeStamp>true</ShowTimeStamp>
+    <ShowWindowTitle>true</ShowWindowTitle>
+    <MarginLeft>236</MarginLeft>
+    <MarginTop>236</MarginTop>
+    <MarginRight>236</MarginRight>
+    <MarginBottom>236</MarginBottom>
+    <UseScale>true</UseScale>
+    <Scale>100</Scale>
+    <PagesX>1</PagesX>
+    <PagesY>1</PagesY>
+    <ShowPageNumbers>false</ShowPageNumbers>
+    <MarginHeader>120</MarginHeader>
+    <MarginFooter>120</MarginFooter>
+    <Header_Left_Font>
+      <FontName>Tahoma</FontName>
+      <PointSize1000>8000</PointSize1000>
+      <Underline>false</Underline>
+      <Bold>false</Bold>
+      <Italic>false</Italic>
+      <DropShadow>false</DropShadow>
+    </Header_Left_Font>
+    <Header_Center_Font>
+      <FontName>Tahoma</FontName>
+      <PointSize1000>8000</PointSize1000>
+      <Underline>false</Underline>
+      <Bold>false</Bold>
+      <Italic>false</Italic>
+      <DropShadow>false</DropShadow>
+    </Header_Center_Font>
+    <Header_Right_Font>
+      <FontName>Tahoma</FontName>
+      <PointSize1000>8000</PointSize1000>
+      <Underline>false</Underline>
+      <Bold>false</Bold>
+      <Italic>false</Italic>
+      <DropShadow>false</DropShadow>
+    </Header_Right_Font>
+    <Footer_Left_Font>
+      <FontName>Tahoma</FontName>
+      <PointSize1000>8000</PointSize1000>
+      <Underline>false</Underline>
+      <Bold>false</Bold>
+      <Italic>false</Italic>
+      <DropShadow>false</DropShadow>
+    </Footer_Left_Font>
+    <Footer_Center_Font>
+      <FontName>Tahoma</FontName>
+      <PointSize1000>8000</PointSize1000>
+      <Underline>false</Underline>
+      <Bold>false</Bold>
+      <Italic>false</Italic>
+      <DropShadow>false</DropShadow>
+    </Footer_Center_Font>
+    <Footer_Right_Font>
+      <FontName>Tahoma</FontName>
+      <PointSize1000>8000</PointSize1000>
+      <Underline>false</Underline>
+      <Bold>false</Bold>
+      <Italic>false</Italic>
+      <DropShadow>false</DropShadow>
+    </Footer_Right_Font>
+    <Header_Left_Font_UserSet>false</Header_Left_Font_UserSet>
+    <Header_Center_Font_UserSet>false</Header_Center_Font_UserSet>
+    <Header_Right_Font_UserSet>false</Header_Right_Font_UserSet>
+    <Footer_Left_Font_UserSet>false</Footer_Left_Font_UserSet>
+    <Footer_Center_Font_UserSet>false</Footer_Center_Font_UserSet>
+    <Footer_Right_Font_UserSet>false</Footer_Right_Font_UserSet>
+    <Header_Left></Header_Left>
+    <Header_Center></Header_Center>
+    <Header_Right></Header_Right>
+    <Footer_Left></Footer_Left>
+    <Footer_Center></Footer_Center>
+    <Footer_Right></Footer_Right>
+    <SelectedPaperFormat></SelectedPaperFormat>
+    <SelectedPrinter></SelectedPrinter>
+    <HeadingText></HeadingText>
+    <HeadingTextFont></HeadingTextFont>
+    <HeadingTextFont_UserSet>false</HeadingTextFont_UserSet>
+    <TrailingText></TrailingText>
+    <TrailingTextFont></TrailingTextFont>
+    <TrailingTextFont_UserSet>false</TrailingTextFont_UserSet>
+    <ImageArray></ImageArray>
+    <SelectionStampFont></SelectionStampFont>
+    <SheetPrintDrawBackGround>false</SheetPrintDrawBackGround>
+    <StrDevModeExtra></StrDevModeExtra>
+  </PrintSettings>
+  <SortCriteria>
+    <SortByState>1</SortByState>
+    <SortByFrequency>0</SortByFrequency>
+    <SortByNumeric>0</SortByNumeric>
+    <SortByAscii>1</SortByAscii>
+    <SortByLoadOrder>0</SortByLoadOrder>
+    <SortByExpression>0</SortByExpression>
+    <Expression></Expression>
+    <SortByGreyness>0</SortByGreyness>
+  </SortCriteria>
+  <NumberPresentation></NumberPresentation>
+  <ExpandedNodes></ExpandedNodes>
+  <OnSelectActionItems></OnSelectActionItems>
+  <SuppressAutoSortByState>false</SuppressAutoSortByState>
+  <Expressions></Expressions>
+  <NullSymbol>-</NullSymbol>
+  <MissingSymbol>-</MissingSymbol>
+  <MoreSearchSettings></MoreSearchSettings>
+</ListBoxProperties>

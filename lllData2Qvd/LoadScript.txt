@@ -25,60 +25,17 @@ set qvdProduct = 'Product';
 set qvdReferalPartner = 'ReferalPartner';
 set qvdTemplate = 'Template';
 set qvdVisitor = 'Visitor';
+set qvdTagApplied = 'ContactTagApplied';
+set qvdContactTag = 'ContactTag';
 
 set HidPrefix = '^';
 
 set qvdPath = 'C:\Users\Piers\Documents\Tessa\Qlik\Data';
 set dataDir = 'C:\Users\Piers\Documents\Tessa\Qlik\Data';
+set drupal2Isoft = 900000;
 
 // https://community.qlik.com/docs/DOC-3836
 set MonthDiff = Num(((year($2) * 12) + month($2)) - (((year($1) * 12) + month($1))));
-///$tab campaingn
-$(qvdCampaign):
-QUALIFY *;
-UNQUALIFY %CampaignId;
-LOAD 
-	Id as %CampaignId, 
-	Name,
-	Categories, 
-	[Active Contacts], 
-	Date([Published Date])
-FROM [$(dataDir)\$(qvdCampaign).csv] (txt, codepage is 1252, embedded labels, delimiter is ',', msq);
-UNQUALIFY *;
-STORE $(qvdCampaign) into $(qvdPath)/$(qvdCampaign).qvd(qvd);
-drop table $(qvdCampaign);
-
-
-
-
-///$tab company
-$(qvdCampany):
-QUALIFY *;
-UNQUALIFY %CampanyId;
-LOAD 
-	Id as %CampanyId, 
-	[Company Action], 
-	Company, 
-	[Main Contact First Name], 
-	[Main Contact Last Name], 
-	[Company Name], 
-	[Street Address 1], 
-	[Street Address 2], 
-	City, 
-	State, 
-	Country, 
-	[Postal Code], 
-	[Zip Four 1], 
-	Website, 
-	Phone, 
-	Fax, 
-	Email, 
-	[Date Created], 
-	[Tag Ids], 
-	Tags
-FROM [$(dataDir)\$(qvdCampany).csv] (txt, codepage is 1252, embedded labels, delimiter is ',', msq);
-UNQUALIFY *;
-
 ///$tab referal partner
 $(qvdReferalPartner):
 QUALIFY *;
@@ -153,141 +110,145 @@ UNQUALIFY *;
 STORE $(qvdReferalPartner) into $(qvdPath)/$(qvdReferalPartner).qvd(qvd);
 
 ///$tab contact
-$(qvdContact):
-QUALIFY *;
+$(qvdContact)_temp:
+//QUALIFY *;
 UNQUALIFY %ContactId, %CampanyId;
 LOAD 
 	Id as %ContactId,
 	[Company Id] as %CampanyId, 	 
 	Name, 
-	[First Name], 
-	[Last Name], 
-	[Spouse Name], 
-	Date(Birthday), 
-	[Company Name], 
-	//[Phone 1], 
-	//[Phone 1], 
-	//[Phone 1 Ext], 
-	//[Phone 1 Type], 
-	//[Phone 2], 
-	//[Phone 2], 
-	//[Phone 2 Ext], 
-	//[Phone 2 Type], 
-	//[Phone 3], 
-	//[Phone 3], 
-	//[Phone 3 Ext], 
-	//[Phone 3 Type], 
-	Email, 
-	[Email Address 2], 
-	[Email Address 3], 
-	//[Fax 1], 
-	//[Fax 1], 
-	//[Fax 1 Type], 
-	//[Fax 2], 
-	//[Fax 2], 
-	//[Fax 2 Type], 
-	[Street Address 1], 
+	Email, 	
+	[Street Address 1] , 
 	[Street Address 2], 
 	City, 
 	State, 
-	//[Postal Code], 
-	//[Postal Code], 
+	[Postal Code], 
+	//[Postal Code], two [Post Code] fields from infusionsoft, make sure one is removed. 
 	[Zip Four], 
 	Country, 
-	[Street Address 1 (Shipping)], 
-	[Street Address 2 (Shipping)], 
-	[City (Shipping)], 
-	[State (Shipping)], 
-	//[Postal Code (Shipping)], 
-	//[Postal Code (Shipping)], 
-	[Zip Four (Shipping)], 
-	[Country (Shipping)], 
-	Twitter, 
-	Facebook, 
-	LinkedIn, 
-	[Street Address 1 (Optional)], 
-	[Street Address 2 (Optional)], 
-	[City (Optional)], 
-	[State (Optional)], 
-	//[Postal Code (Optional)], 
-	//[Postal Code (Optional)], 
-	[Zip Four (Optional)], 
-	[Country (Optional)], 
-	//[Phone 4], 
-	//[Phone 4], 
-	//[Phone 4 Ext], 
-	//[Phone 4 Type], 
-	//[Phone 5], 
-	//[Phone 5], 
-	//[Phone 5 Ext], 
-	//[Phone 5 Type], 
-	[Person Type], 
-	[Job Title], 
-	Website, 
-	SSN, 
-	[Last 4 SSN], 
-	[Middle Name], 
-	Nickname, 
-	Username, 
-	[Assistant Name], 
-	[Assistant Phone], 
-	Title, 
-	Suffix, 
-	Anniversary, 
-	[Created By], 
-	[Date Created],
-	[Last Updated], 
-	OwnerID, 
-	Language, 
-	[Time Zone], 
-	Owner, 
-	[Lead Source], 
-	[Lead Source Category], 
-	[Referral Code], 
-	[Landlord Law Newsletter], 
-	[Add Method], 
-	[Add URL], 
-	[DMA Code], 
-	[IP Address], 
-	Message, 
-	[Name 1], 
-	Status, 
-	Verified, 
-	[Membership began (?)], 
-	[Membership renewal date (non IS   pmt)], 
+//	Date(min([Order Date]),'DD/MM/YYYY') as [Date Became Member]
+	Date([Date Created],'DD/MM/YYYY') as [Date Created],
+	Date([Last Updated],'DD/MM/YYYY') as [Date Last Updated],
+	//Added
+	Date([Membership began (?)],'DD/MM/YYYY') as [Membership began],
+	Date([Membership renewal date (non IS   pmt)],'DD/MM/YYYY') as [Membership renewal date (non IS pmt)],
 	[LLL Drupal User number], 
 	[Drupal User Name], 
 	[Drupal Role], 
 	[Membership Product Name], 
-	[Feedback / testimonial], 
-	[Old SO ID no], 
-	[Next IS Bill Date Calendar], 
-	[Next IS Bill Date], 
-	[Date for plus this countdown timer], 
-	[Days from first contact to add current LLL tag], 
-	[Send why are you unhappy email], 
-	[Follow up], 
-	IPAddress, 
-	[Referred Friend's Name], 
-	[Referred Friend's Email], 
-	[NPS Comments], 
-	[Veggie diet?], 
-	[Gluten free], 
-	[Diary free], 
-	[Lactose free], 
-	[Nut Allergy], 
-	[Special Diet Notes:], 
-	[Disability / health issue], 
-	[Date diet info provided by contact], 
-	[Moodle Username], 
-	[Appointment Time], 
-	[Appointment Date], 
-	[Date for attendance note], 
-	[Attendance Note Text], 
-	[Lead Score]
-	/*
-	//Following field repated due to fields haveing the same name
-	
+	//[//Feedback / testimonial], 
+	//[Old SO ID no], 
+	Date([Next IS Bill Date Calendar], 'DD/MM/YYYY') as [Next IS Bill Date Calendar],
+	Date([Next IS Bill Date], 'DD/MM/YYYY') as [Next IS Bill Date]
+	//	
+	//Not needed
+	/*	
+		[First Name], 
+		[Last Name], 
+		[Spouse Name], 
+		Date(Birthday), 
+		[Company Name], 
+		//[Phone 1], 
+		//[Phone 1], 
+		//[Phone 1 Ext], 
+		//[Phone 1 Type], 
+		//[Phone 2], 
+		//[Phone 2], 
+		//[Phone 2 Ext], 
+		//[Phone 2 Type], 
+		//[Phone 3], 
+		//[Phone 3], 
+		//[Phone 3 Ext], 
+		//[Phone 3 Type], 
+		[Email Address 2], 
+		[Email Address 3], 
+		//[Fax 1], 
+		//[Fax 1], 
+		//[Fax 1 Type], 
+		//[Fax 2], 
+		//[Fax 2], 
+		//[Fax 2 Type], 
+		[Street Address 1 (Shipping)], 
+		[Street Address 2 (Shipping)], 
+		[City (Shipping)], 
+		[State (Shipping)], 
+		//[Postal Code (Shipping)], 
+		//[Postal Code (Shipping)], 
+		[Zip Four (Shipping)], 
+		[Country (Shipping)], 
+		Twitter, 
+		Facebook, 
+		LinkedIn, 
+		[Street Address 1 (Optional)], 
+		[Street Address 2 (Optional)], 
+		[City (Optional)], 
+		[State (Optional)], 
+		//[Postal Code (Optional)], 
+		//[Postal Code (Optional)], 
+		[Zip Four (Optional)], 
+		[Country (Optional)], 
+		//[Phone 4], 
+		//[Phone 4], 
+		//[Phone 4 Ext], 
+		//[Phone 4 Type], 
+		//[Phone 5], 
+		//[Phone 5], 
+		//[Phone 5 Ext], 
+		//[Phone 5 Type], 
+		[Person Type], 
+		[Job Title], 
+		Website, 
+		SSN, 
+		[Last 4 SSN], 
+		[Middle Name], 
+		Nickname, 
+		Username, 
+		[Assistant Name], 
+		[Assistant Phone], 
+		Title, 
+		Suffix, 
+		Anniversary, 
+		[Created By], 
+		OwnerID, 
+		Language, 
+		[Time Zone], 
+		Owner, 
+		[Lead Source], 
+		[Lead Source Category], 
+		[Referral Code], 
+		[Landlord Law Newsletter], 
+		[Add Method], 
+		[Add URL], 
+		[DMA Code], 
+		[IP Address], 
+		Message, 
+		[Name 1], 
+		Status, 
+		Verified, 
+		//***********************************
+		//*****************************************
+		[Date for plus this countdown timer], 
+		[Days from first contact to add current LLL tag], 
+		[Send why are you unhappy email], 
+		[Follow up], 
+		IPAddress, 
+		[Referred Friend's Name], 
+		[Referred Friend's Email], 
+		[NPS Comments], 
+		[Veggie diet?], 
+		[Gluten free], 
+		[Diary free], 
+		[Lactose free], 
+		[Nut Allergy], 
+		[Special Diet Notes:], 
+		[Disability / health issue], 
+		[Date diet info provided by contact], 
+		[Moodle Username], 
+		[Appointment Time], 
+		[Appointment Date], 
+		[Date for attendance note], 
+		[Attendance Note Text], 
+		[Lead Score]	
 	//Fields removed for password protection
 		DrupalPW, 
 		Password, 
@@ -297,21 +258,79 @@ LOAD
 		Tags, 
 	*/			
 FROM [$(dataDir)\$(qvdContact).csv] (txt, codepage is 1252, embedded labels, delimiter is ',', msq);
+//UNQUALIFY *;
+
+///$tab drupal contact
+ODBC CONNECT TO LLLDrupal_DSN;
+DrupalUsers:
+LOAD 
+	uid as [LLL Drupal User number], 
+	name as [Name], 
+	//name as [Drupal User Name],
+	mail as [Email], 
+	//created as [Date Created];
+	Date(Floor(Date#('19700101', 'YYYYMMDD') + (created / 86400)),'DD/MM/YYYY') as [Date Created];
+	// Not needed
+	/*
+		access,
+		mode, 
+		sort, 
+		threshold, 
+		theme, 
+		signature, 
+		signature_format,
+		login, 
+		status, 
+		timezone, 
+		language, 
+		picture, 
+		init, 
+		data, 
+		timezone_name;
+	//Hide passwords
+		pass,
+	//Not used 		
+	*/	
+SQL SELECT * FROM lldrupal.users;
+
+left Join($(qvdContact)_temp)
+LOAD 
+	 *
+Resident DrupalUsers;
+
+QUALIFY *;
+UNQUALIFY %ContactId, %CampanyId, [LLL Drupal User number];
+$(qvdContact):
+Load
+	If( isNull(%ContactId), [LLL Drupal User number] + $(drupal2Isoft), %ContactId) as %ContactId, 
+	%CampanyId, 
+	[LLL Drupal User number], 	 
+	Name, 
+	Email, 	
+	[Street Address 1] , 
+	[Street Address 2], 
+	City, 
+	State, 
+	[Postal Code], 
+	[Zip Four], 
+	Country, 
+	[Date Created],
+	[Date Last Updated], 
+	[Membership began], 
+	[Membership renewal date (non IS pmt)], 
+	[Drupal User Name], 
+	[Drupal Role], 
+	[Membership Product Name], 
+	[Next IS Bill Date Calendar], 
+	[Next IS Bill Date]
+Resident $(qvdContact)_temp;// order by [Contact.LLL Drupal User number] asc;
 UNQUALIFY *;
 
-///$tab combined contact
-Left Join($(qvdContact))
-LOAD 	
-	 *
-Resident $(qvdCampany);
-/*
-Left Join($(qvdContact))
-LOAD 	
-	 *
-Resident $(qvdReferalPartner);
-*/
-STORE $(qvdContact) into $(qvdPath)/$(qvdContact).qvd(qvd);
-drop Tables $(qvdCampany);//, $(qvdReferalPartner);
+drop table DrupalUsers;
+drop table $(qvdContact)_temp;
+//STORE $(qvdContact) into $(qvdPath)/$(qvdContact).qvd(qvd);
+
+
 ///$tab product
 $(qvdProduct):
 LOAD 
@@ -323,8 +342,33 @@ LOAD
 	[Product Category],
 	[Membership Months]
 FROM [$(dataDir)\$(qvdProduct).csv] (txt, codepage is 1252, embedded labels, delimiter is ',', msq);
-STORE $(qvdProduct) into $(qvdPath)/$(qvdProduct).qvd(qvd);
+//STORE $(qvdProduct) into $(qvdPath)/$(qvdProduct).qvd(qvd);
 //drop table $(qvdProduct);
+/*
+ODBC CONNECT TO LLLDrupal_DSN;
+Drupal_UcProducts:
+LOAD 
+	vid + $(drupal2Isoft) as %ProductId, 	
+	model as [Product Name] , 
+	sell_price as Price, 
+	0 as [Membership Months],
+	'inactive' as [Product Status];	
+	//Not needed
+		//nid, `list_price`, cost, 
+		//weight, `weight_units`, length, width, height, `length_units`, `pkg_qty`, 
+	    //`default_qty`, `unique_hash`, ordering, shippable;	
+SQL SELECT *
+FROM lldrupal.`uc_products`;
+*/
+Concatenate($(qvdProduct))
+LOAD 
+	id as %ProductId,  
+	[Product Name], 
+	[Membership Months], 
+	Price
+FROM [$(qvdPath)\CustomDrupalProducts.csv] (txt, codepage is 1252, embedded labels, delimiter is ',', msq);
+STORE $(qvdProduct) into $(qvdPath)/$(qvdProduct).qvd(qvd);
+
 
 
 
@@ -341,8 +385,11 @@ LOAD
 	[Order Type], 
 	[Promo Code], 
 	[Order Title], 
-	[Order Date], 	
+	Date([Order Date],'DD/MM/YYYY') as [Order Date], 
+	//Date(Monthstart(Date([Order Date]))) as [Order Date3], 		
+	//Date(Monthstart(Date([Order Date])),'DD/MM/YYYY') as [Order Date], 	
 	Serial, 
+	0 as [Drupal Order],
 	KeepChar([Order Total], '0123456789.') as [Order Total] 
 	//ApplyMap('MapMembershipMonths', [Product Ids], 0) as [Product Membership]
 	/*
@@ -410,13 +457,104 @@ LOAD
 	*/
 FROM [$(dataDir)\$(qvdOrder).csv] (txt, codepage is 1252, embedded labels, delimiter is ',', msq);
 
-// Add a field to show number how many months since a customers first order a subsequent order is placed
+
+
+
+///$tab order drupal
+//The ideas is to merge orders from the drupal database
+//There are onging Drupla users added.
+
+ContactIds_temp:
+LOAD
+	%ContactId,
+	[LLL Drupal User number]
+Resident $(qvdContact);
+
+Drupal_UcOrder_temp:
+LOAD	
+	order_id + $(drupal2Isoft) as %OrderId, 
+	//uid,// + $(drupal2Isoft) as %ContactId,	 
+	order_total as  [Order Total], 	
+	uid as [LLL Drupal User number],
+	//Date(Floor(Date#('19800101', 'YYYYMMDD') + (created / 86400))) as [Order Date],
+	Date(Floor(Date#('19700101', 'YYYYMMDD') + (created / 86400))) as [Order Date],
+	-1 as [Drupal Order];
+	//Date(Floor(Date#('19700101', 'YYYYMMDD') + (created / 86400))) as [Order Date];
+/*
+	order_status, `primary_email`, `delivery_first_name`, `delivery_last_name`, 
+    `delivery_phone`, `delivery_company`, `delivery_street1`, 
+    `delivery_street2`, `delivery_city`, `delivery_zone`, 
+    `delivery_postal_code`, `delivery_country`, `billing_first_name`, 
+    `billing_last_name`, `billing_phone`, `billing_company`, 
+    `billing_street1`, `billing_street2`, `billing_city`, 
+    `billing_zone`, `billing_postal_code`, `billing_country`, 
+    `payment_method`, data, created, modified, host;
+*/
+SQL SELECT * FROM lldrupal.`uc_orders`;
+/*
+Drupal_temp:
+LOAD	
+	%OrderId as %OrerId, 
+	[Order Total] as [Order Toal], 	
+	[LLL Drupal User number] as [LLL Drupal  number],
+	[Order Date2] as [ Date2],
+	[Order Date3] as [ Date3],
+	[Order Date] as [Order Date],
+Resident Drupal_UcOrder_temp order by [Order Date] desc;
+*/
+left join(Drupal_UcOrder_temp)
+LOAD * Resident ContactIds_temp;
+drop table ContactIds_temp;
+
+Drupal_UcOrderPruduct_temp:
+LOAD 
+	nid + $(drupal2Isoft) as %ProductId,
+	order_id + $(drupal2Isoft) as %OrderId,
+	title as [Order Title];
+	//`order_product_id`, `order_id`, manufacturer, model, qty, 
+    //cost, price, weight, data;
+SQL SELECT * FROM lldrupal.`uc_order_products`;
+	
+Left Join(Drupal_UcOrder_temp)
+LOAD * Resident Drupal_UcOrderPruduct_temp;
+drop table Drupal_UcOrderPruduct_temp;
+
+Drupal_UcOrderWithContactId_temp:
+LOAD
+	if (IsNull(%ContactId) or %ContactId = 0, [LLL Drupal User number]+$(drupal2Isoft), %ContactId) as %ContactId, 
+	%OrderId, 
+	[Order Total], 	
+	%ProductId,
+	[Order Title],
+	[Order Date],
+	[Drupal Order]
+Resident Drupal_UcOrder_temp order by %OrderId desc;
+drop table Drupal_UcOrder_temp;
+
+Join($(qvdOrder)_tmp)
+LOAD * Resident Drupal_UcOrderWithContactId_temp where [Order Total] > 0 and %ContactId <> 900000;
+drop table Drupal_UcOrderWithContactId_temp;
+
+
+
+
+
+
+
+///$tab order time since first order
+// Add a field to show number the date a cusomer's first order was made
 OD_tmp:
 LOAD
 	%ContactId,
-	min([Order Date]) as [First Order Date]	
+	Date(min([Order Date]),'DD/MM/YYYY') as [First Order Date]	
 Resident $(qvdOrder)_tmp
 Group By %ContactId;
+
+$(qvdContact):
+Left Join($(qvdContact))
+LOAD 	
+	 *
+Resident OD_tmp;
 
 $(qvdOrder)_tmp:
 Left Join($(qvdOrder)_tmp)
@@ -425,63 +563,58 @@ LOAD
 Resident OD_tmp;
 drop table OD_tmp;
 
+// Add a field to show the date a customer first became a member of lll
+BecameMember0_tmp:
+LOAD
+	%ProductId,
+	%ContactId,
+	[Order Date]
+Resident $(qvdOrder)_tmp;
+
+Left Join(BecameMember0_tmp)
+Load
+	%ProductId,
+	[Membership Months]
+Resident  $(qvdProduct);
+
+BecameMember_tmp:
+NOCONCATENATE LOAD * resident BecameMember0_tmp 
+where [Membership Months] > 0;
+drop table BecameMember0_tmp;
+drop fields %ProductId, [Membership Months] from BecameMember_tmp;
+
+Left Join(BecameMember_tmp)
+Load
+	%ContactId,
+	Date(min([Order Date]),'DD/MM/YYYY') as [Date Became Member]	
+Resident  BecameMember_tmp
+Group By %ContactId;
+drop field [Order Date] from BecameMember_tmp;
+
+$(qvdContact):
+Left Join($(qvdContact))
+LOAD 	
+	 *
+Resident BecameMember_tmp;
+drop table BecameMember_tmp;
+/*
 $(qvdOrder):
 LOAD
 	*,
 	$(MonthDiff([First Order Date], [Order Date])) as [Months Since Fist Order]	
-Resident $(qvdOrder)_tmp;
+Resident $(qvdOrder)_tmp order by [Order Date] desc;
 drop table $(qvdOrder)_tmp;
+*/
+$(qvdOrder):
+LOAD
+	*,
+	$(MonthDiff([First Order Date], [Order Date])) as [Months Since Fist Order]	
+Resident $(qvdOrder)_tmp order by [Order Date] desc;
+drop table $(qvdOrder)_tmp;
+drop field [First Order Date] from $(qvdOrder);
 
 STORE $(qvdOrder) into $(qvdPath)/$(qvdOrder).qvd(qvd);
-	
-
-
-
-///$tab template
-$(qvdTemplate):
-QUALIFY *;
-UNQUALIFY %TemplateId;
-LOAD 
-	Id as %TemplateId, 
-	Name, 
-	Categories, 
-	Type, 
-	Ready, 
-	[Name Hidden], 
-	Shared
-FROM [$(dataDir)\$(qvdTemplate).csv] (txt, codepage is 1252, embedded labels, delimiter is ',', msq);
-UNQUALIFY *;
-STORE $(qvdTemplate) into $(qvdPath)/$(qvdTemplate).qvd(qvd);
-drop table $(qvdTemplate);
-
-///$tab visitor
-$(qvdVisitor):
-QUALIFY *;
-UNQUALIFY %VisitorId;
-LOAD 
-	Id as %VisitorId, 
-	Os, 
-	[Screen Resolution], 
-	[Last Visit Date], 
-	[Browser Name], 
-	[Browser Version], 
-	[Adobe Reader Installed], 
-	[Flash Installed], 
-	[Java Installed], 
-	[Shockwave Installed], 
-	[Quicktime Installed], 
-	[Realplayer Installed], 
-	[Wmp Installed], 
-	[Silverlight Installed], 
-	[Date Created], 
-	[Lead Source.Id], 
-	[Lead Source]
-FROM [$(dataDir)\$(qvdVisitor).csv] (txt, codepage is 1252, embedded labels, delimiter is ',', msq);
-UNQUALIFY *;
-STORE $(qvdVisitor) into $(qvdPath)/$(qvdVisitor).qvd(qvd);
-drop table $(qvdVisitor);
-
-
+STORE $(qvdContact) into $(qvdPath)/$(qvdContact).qvd(qvd);	
 ///$tab master calendar
 DataRange:
 LOAD
@@ -511,7 +644,85 @@ order by CalDate asc;
 
 drop Tables DataRange, TempCalDate;
 STORE Calendar into $(qvdPath)/Calendar.qvd(qvd);
+
+
+//drop table $(qvdOrder);
+//drop table $(qvdContact);
+//drop table $(qvdProduct);
+///$tab Tags
+ContactTags:
+LOAD 
+	Id as %ContactId, 
+    Subfield([Tag Ids],',') as %TagId
+FROM [$(dataDir)\$(qvdContact).csv] (txt, codepage is 1252, embedded labels, delimiter is ',', msq);
+
+TagList_temp:
+LOAD 
+	Id as %TagId, 
+    Name as TagName, 
+    Category as TagCategory
+FROM [$(dataDir)\Tags.csv] (txt, utf8, embedded labels, delimiter is ',', msq);
+
+Left Join(ContactTags)
+LOAD
+	*
+Resident TagList_temp;
+drop Table TagList_temp;
+
+TagApplied_temp:
+LOAD 
+    [Contact Id] as %ContactId, 
+    [Contact Group Id] as %TagId,     
+    [Date Applied] as [Date Tag Applied] 
+    //[cga Group Id], [cga Contact Id], Tag,
+    //[Contact First Name], [Contact Last Name]
+FROM [$(qvdPath)\TagApplied.csv] (txt, utf8, embedded labels, delimiter is ',', msq);
+
+Left Join(ContactTags)
+LOAD
+	*
+Resident TagApplied_temp;
+drop Table TagApplied_temp;
+
+STORE ContactTags into $(qvdPath)/ContactTags.qvd(qvd);
+
+
+
+
+
+
+
+///$tab visitor
+/*
+$(qvdVisitor):
+QUALIFY *;
+UNQUALIFY %VisitorId;
+LOAD 
+	Id as %VisitorId, 
+	Os, 
+	[Screen Resolution], 
+	[Last Visit Date], 
+	[Browser Name], 
+	[Browser Version], 
+	[Adobe Reader Installed], 
+	[Flash Installed], 
+	[Java Installed], 
+	[Shockwave Installed], 
+	[Quicktime Installed], 
+	[Realplayer Installed], 
+	[Wmp Installed], 
+	[Silverlight Installed], 
+	[Date Created], 
+	[Lead Source.Id], 
+	[Lead Source]
+FROM [$(dataDir)\$(qvdVisitor).csv] (txt, codepage is 1252, embedded labels, delimiter is ',', msq);
+UNQUALIFY *;
+STORE $(qvdVisitor) into $(qvdPath)/$(qvdVisitor).qvd(qvd);
+drop table $(qvdVisitor);
+*/
+
 ///$tab Membership
+/*
 TempMonths:
 LOAD 
 	%OrderId,
@@ -552,6 +763,79 @@ STORE Membership into $(qvdPath)/Membership.qvd(qvd);
 //DROP Table $(qvdOrder);
 //DROP Table $(qvdProduct);
 //DROP Table Membership
-
+*/
 
  
+///$tab campaingn
+/*
+$(qvdCampaign):
+QUALIFY *;
+UNQUALIFY %CampaignId;
+LOAD 
+	Id as %CampaignId, 
+	Name,
+	Categories, 
+	[Active Contacts], 
+	Date([Published Date])
+FROM [$(dataDir)\$(qvdCampaign).csv] (txt, codepage is 1252, embedded labels, delimiter is ',', msq);
+UNQUALIFY *;
+STORE $(qvdCampaign) into $(qvdPath)/$(qvdCampaign).qvd(qvd);
+drop table $(qvdCampaign);
+*/
+
+
+///$tab company
+/*
+$(qvdCampany):
+QUALIFY *;
+UNQUALIFY %CampanyId;
+LOAD 
+	Id as %CampanyId, 
+	[Company Action], 
+	Company, 
+	[Main Contact First Name], 
+	[Main Contact Last Name], 
+	[Company Name], 
+	[Street Address 1], 
+	[Street Address 2], 
+	City, 
+	State, 
+	Country, 
+	[Postal Code], 
+	[Zip Four 1], 
+	Website, 
+	Phone, 
+	Fax, 
+	Email, 
+	[Date Created], 
+	[Tag Ids], 
+	Tags
+FROM [$(dataDir)\$(qvdCampany).csv] (txt, codepage is 1252, embedded labels, delimiter is ',', msq);
+UNQUALIFY *;
+
+Left Join($(qvdContact))
+LOAD 	
+	 *
+Resident $(qvdCampany);
+
+STORE $(qvdContact) into $(qvdPath)/$(qvdContact).qvd(qvd);
+drop Tables $(qvdCampany);//, $(qvdReferalPartner);
+*/
+///$tab template
+/*
+$(qvdTemplate):
+QUALIFY *;
+UNQUALIFY %TemplateId;
+LOAD 
+	Id as %TemplateId, 
+	Name, 
+	Categories, 
+	Type, 
+	Ready, 
+	[Name Hidden], 
+	Shared
+FROM [$(dataDir)\$(qvdTemplate).csv] (txt, codepage is 1252, embedded labels, delimiter is ',', msq);
+UNQUALIFY *;
+STORE $(qvdTemplate) into $(qvdPath)/$(qvdTemplate).qvd(qvd);
+drop table $(qvdTemplate);
+*/

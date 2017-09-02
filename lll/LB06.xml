@@ -248,7 +248,7 @@
   </Layout>
   <Def>
     <Name>ReferalPartner.Referral Partner Name</Name>
-    <Type>PRESENT</Type>
+    <Type>NOT_PRESENT</Type>
   </Def>
   <Title>
     <v>Referal Partner</v>

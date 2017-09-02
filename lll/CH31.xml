@@ -620,7 +620,7 @@
     <ChartDimensionDataDef>
       <PseudoDef>
         <Name>Membership Month</Name>
-        <Type>PRESENT</Type>
+        <Type>NOT_PRESENT</Type>
       </PseudoDef>
       <Title></Title>
       <TotalString></TotalString>
@@ -2146,7 +2146,7 @@
     <ColWidths>
       <int>300</int>
       <int>300</int>
-      <int>300</int>
+      <int>100</int>
     </ColWidths>
     <Striping>
       <int>1</int>
