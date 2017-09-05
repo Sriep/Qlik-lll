@@ -858,7 +858,7 @@
       <int>3</int>
     </InterOrder>
   </BookmarkSortOrder>
-  <ScriptTabActiveTab>2</ScriptTabActiveTab>
+  <ScriptTabActiveTab>8</ScriptTabActiveTab>
   <ModuleSystemAccessIntended>0</ModuleSystemAccessIntended>
   <InhibitAggressiveQvdCleaning>false</InhibitAggressiveQvdCleaning>
   <Alerts></Alerts>
@@ -1298,7 +1298,7 @@
   <AllowServerSearchObjects>false</AllowServerSearchObjects>
   <EnableDynamicDataUpdate>false</EnableDynamicDataUpdate>
   <LogfileIOMode>LOGFILE_CLASSIC_OVERWRITE</LogfileIOMode>
-  <UseAjaxUI>false</UseAjaxUI>
+  <UseAjaxUI>true</UseAjaxUI>
   <ClearedForNamedUserDocumentCal>true</ClearedForNamedUserDocumentCal>
   <NotClearedForNamedUserDocumentCalReason></NotClearedForNamedUserDocumentCalReason>
   <UseMetaSectionAccessNames>true</UseMetaSectionAccessNames>
@@ -1310,10 +1310,10 @@
   <Extensions></Extensions>
   <ExtensionDescriptions></ExtensionDescriptions>
   <AllowServerAnnotation>true</AllowServerAnnotation>
-  <LastReloadTimeAsISOString>2017-09-02T16:55:35.716Z</LastReloadTimeAsISOString>
+  <LastReloadTimeAsISOString>2017-09-04T17:21:05.078Z</LastReloadTimeAsISOString>
   <AppProperties>
     <Title></Title>
-    <LastReloadTime>2017-09-02T16:55:35.716Z</LastReloadTime>
+    <LastReloadTime>2017-09-04T17:21:05.078Z</LastReloadTime>
     <MigrationHash></MigrationHash>
     <SavedInProductVersion></SavedInProductVersion>
     <Thumbnail></Thumbnail>

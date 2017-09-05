@@ -1,4 +1,4 @@
-﻿<CurrentSelectionProperties>
+﻿<ListBoxProperties>
   <Layout>
     <Frame>
       <BorderWidth>0</BorderWidth>
@@ -10,15 +10,24 @@
         <FillPattern>COLORAREA_PATTERN1</FillPattern>
         <PrimaryCol>
           <Col>
-            <Red>4</Red>
-            <Green>108</Green>
-            <Blue>193</Blue>
+            <Red>232</Red>
+            <Green>232</Green>
+            <Blue>232</Blue>
             <Alpha>255</Alpha>
           </Col>
           <IsCalculated>false</IsCalculated>
           <ColorExpr></ColorExpr>
         </PrimaryCol>
-        <SecondaryCol></SecondaryCol>
+        <SecondaryCol>
+          <Col>
+            <Red>200</Red>
+            <Green>200</Green>
+            <Blue>200</Blue>
+            <Alpha>255</Alpha>
+          </Col>
+          <IsCalculated>false</IsCalculated>
+          <ColorExpr></ColorExpr>
+        </SecondaryCol>
         <Alpha>255</Alpha>
       </Color>
       <Font>
@@ -38,17 +47,17 @@
         <DropShadow>false</DropShadow>
       </CaptionFont>
       <Name>
-        <v>Current Selections</v>
+        <v>Group  Tags</v>
       </Name>
       <Detached>false</Detached>
-      <AllowMinimize>true</AllowMinimize>
+      <AllowMinimize>false</AllowMinimize>
       <AutoMinimize>false</AutoMinimize>
       <AllowMaximize>false</AllowMaximize>
       <AllowInfo>true</AllowInfo>
       <PrintIcon>false</PrintIcon>
       <CopyIcon>false</CopyIcon>
       <XLIcon>false</XLIcon>
-      <SearchIcon>false</SearchIcon>
+      <SearchIcon>true</SearchIcon>
       <SelectPossibleIcon>false</SelectPossibleIcon>
       <SelectExcludedIcon>false</SelectExcludedIcon>
       <SelectAllIcon>false</SelectAllIcon>
@@ -57,7 +66,7 @@
       <LockIcon>false</LockIcon>
       <HelpText></HelpText>
       <ObjectId></ObjectId>
-      <ShrinkFrameToData>false</ShrinkFrameToData>
+      <ShrinkFrameToData>true</ShrinkFrameToData>
       <ShowCaption>true</ShowCaption>
       <MultiLine>0</MultiLine>
       <ActiveBgColor>
@@ -203,166 +212,56 @@
       <MenuIcon>false</MenuIcon>
       <ExtendedProperties></ExtendedProperties>
       <ExtendedValues></ExtendedValues>
-      <StateName></StateName>
+      <StateName>Group 1</StateName>
     </Frame>
-    <ShowStatusColumn>true</ShowStatusColumn>
-    <ShowValueColumn>true</ShowValueColumn>
-    <ShowLabelRow>false</ShowLabelRow>
-    <MultiLine>2</MultiLine>
-    <HeaderMultiLine>0</HeaderMultiLine>
-    <ColWidths>
-      <int>181</int>
-      <int>44</int>
-      <int>678</int>
-    </ColWidths>
-    <BkgColor>
-      <Mode>COLORAREA_SOLID</Mode>
-      <Luminosity>85</Luminosity>
-      <FillDirection>COLORAREA_HORZ</FillDirection>
-      <FillPattern>COLORAREA_PATTERN1</FillPattern>
-      <PrimaryCol>
-        <Col>
-          <Red>255</Red>
-          <Green>255</Green>
-          <Blue>255</Blue>
-          <Alpha>255</Alpha>
-        </Col>
-        <IsCalculated>false</IsCalculated>
-        <ColorExpr></ColorExpr>
-      </PrimaryCol>
-      <SecondaryCol></SecondaryCol>
-      <Alpha>255</Alpha>
-    </BkgColor>
-    <TextColor></TextColor>
-    <LabelBkgColor>
-      <Mode>COLORAREA_DOUBLE_COLORS</Mode>
-      <Luminosity>85</Luminosity>
-      <FillDirection>COLORAREA_HORZ</FillDirection>
-      <FillPattern>COLORAREA_PATTERN1</FillPattern>
-      <PrimaryCol>
-        <Col>
-          <Red>248</Red>
-          <Green>248</Green>
-          <Blue>248</Blue>
-          <Alpha>255</Alpha>
-        </Col>
-        <IsCalculated>false</IsCalculated>
-        <ColorExpr></ColorExpr>
-      </PrimaryCol>
-      <SecondaryCol>
-        <Col>
-          <Red>202</Red>
-          <Green>202</Green>
-          <Blue>202</Blue>
-          <Alpha>255</Alpha>
-        </Col>
-        <IsCalculated>false</IsCalculated>
-        <ColorExpr></ColorExpr>
-      </SecondaryCol>
-      <Alpha>255</Alpha>
-    </LabelBkgColor>
-    <LabelTextColor></LabelTextColor>
-    <BorderStyles>
-      <BorderStylesDef>
-        <Top>
-          <LineStyle>64</LineStyle>
-          <Color></Color>
-          <ExtraBorderSpace16>0</ExtraBorderSpace16>
-        </Top>
-        <Bottom>
-          <LineStyle>64</LineStyle>
-          <Color></Color>
-          <ExtraBorderSpace16>0</ExtraBorderSpace16>
-        </Bottom>
-        <Left>
-          <LineStyle>64</LineStyle>
-          <Color></Color>
-          <ExtraBorderSpace16>0</ExtraBorderSpace16>
-        </Left>
-        <Right>
-          <LineStyle>64</LineStyle>
-          <Color></Color>
-          <ExtraBorderSpace16>0</ExtraBorderSpace16>
-        </Right>
-      </BorderStylesDef>
-      <BorderStylesDef></BorderStylesDef>
-    </BorderStyles>
-    <CellStyles>
-      <CellStyleDef>
-        <NumAdjust>2</NumAdjust>
-        <TextAdjust>0</TextAdjust>
-        <DataVerticalAdjust>4</DataVerticalAdjust>
-        <LabelAdjust>0</LabelAdjust>
-        <LabelVerticalAdjust>4</LabelVerticalAdjust>
-        <SizeMod>0</SizeMod>
-        <FontStyleMod>FONTSTYLE_REGULAR</FontStyleMod>
-        <FgCol></FgCol>
-        <BgCol>
-          <Col>
-            <Red>150</Red>
-            <Green>150</Green>
-            <Blue>150</Blue>
-            <Alpha>255</Alpha>
-          </Col>
-          <IsCalculated>false</IsCalculated>
-          <ColorExpr></ColorExpr>
-        </BgCol>
-        <BorderStyleIx>0</BorderStyleIx>
-        <CellImageStyleIx>0</CellImageStyleIx>
-        <EditableCell>0</EditableCell>
-        <CellType>LABEL_CELL</CellType>
-        <CellBorders>false</CellBorders>
-        <CellBorderColor></CellBorderColor>
-      </CellStyleDef>
-      <CellStyleDef>
-        <NumAdjust>2</NumAdjust>
-        <TextAdjust>0</TextAdjust>
-        <DataVerticalAdjust>4</DataVerticalAdjust>
-        <LabelAdjust>0</LabelAdjust>
-        <LabelVerticalAdjust>4</LabelVerticalAdjust>
-        <SizeMod>0</SizeMod>
-        <FontStyleMod>FONTSTYLE_REGULAR</FontStyleMod>
-        <FgCol></FgCol>
-        <BgCol>
-          <Col>
-            <Red>255</Red>
-            <Green>255</Green>
-            <Blue>255</Blue>
-            <Alpha>255</Alpha>
-          </Col>
-          <IsCalculated>false</IsCalculated>
-          <ColorExpr></ColorExpr>
-        </BgCol>
-        <BorderStyleIx>1</BorderStyleIx>
-        <CellImageStyleIx>0</CellImageStyleIx>
-        <EditableCell>0</EditableCell>
-        <CellType>LABEL_CELL</CellType>
-        <CellBorders>false</CellBorders>
-        <CellBorderColor></CellBorderColor>
-      </CellStyleDef>
-    </CellStyles>
-    <LabelRow>
-      <TextCellContent>
-        <String>Fields</String>
-        <IsNum>false</IsNum>
-        <CellStyleIx>0</CellStyleIx>
-      </TextCellContent>
-      <TextCellContent></TextCellContent>
-      <TextCellContent>
-        <String>Values</String>
-        <IsNum>false</IsNum>
-        <CellStyleIx>0</CellStyleIx>
-      </TextCellContent>
-    </LabelRow>
-    <Striping>
-      <int>1</int>
-    </Striping>
     <ReadOnly>false</ReadOnly>
-    <ShowEraserIcon>true</ShowEraserIcon>
-    <ShowLockUnlockIcon>false</ShowLockUnlockIcon>
-    <ShowDropdownSelectIcon>true</ShowDropdownSelectIcon>
+    <NumAdjust>2</NumAdjust>
+    <TextAdjust>0</TextAdjust>
+    <MultiLine>0</MultiLine>
+    <ShowFrequency>false</ShowFrequency>
+    <FrequencyInPercent>false</FrequencyInPercent>
+    <Longest></Longest>
+    <Borders>
+      <Top></Top>
+      <Bottom></Bottom>
+      <Left>
+        <LineStyle>32</LineStyle>
+        <Color></Color>
+        <ExtraBorderSpace16>0</ExtraBorderSpace16>
+      </Left>
+      <Right>
+        <LineStyle>32</LineStyle>
+        <Color></Color>
+        <ExtraBorderSpace16>0</ExtraBorderSpace16>
+      </Right>
+    </Borders>
+    <MultiColumn>false</MultiColumn>
+    <OrderByRow>false</OrderByRow>
+    <HideExcluded>false</HideExcluded>
+    <SelectionStyle>SS_USER_PREF</SelectionStyle>
+    <ImageRepresentation></ImageRepresentation>
+    <SoftLock>false</SoftLock>
+    <ExcludedValuesMode>0</ExcludedValuesMode>
+    <DefaultSearchMode>0</DefaultSearchMode>
+    <SuppressHorizontalScroll>false</SuppressHorizontalScroll>
+    <FixedColumnsCount>-1</FixedColumnsCount>
+    <LayoutDependentPrint>true</LayoutDependentPrint>
+    <PrintAllValues>false</PrintAllValues>
+    <HierarchySeparator>/</HierarchySeparator>
+    <ShowAsTreeView>false</ShowAsTreeView>
+    <CurrentInfoURL></CurrentInfoURL>
+    <SuppressSearchHighlight>false</SuppressSearchHighlight>
+    <TextColor></TextColor>
+    <PreferredTextSearchMode>TEXT_SEARCH_NORMAL</PreferredTextSearchMode>
+    <CellBorders>false</CellBorders>
   </Layout>
-  <Title></Title>
+  <Def>
+    <Name>TagName</Name>
+    <Type>PRESENT</Type>
+  </Def>
+  <Title>
+    <v>Group  Tags</v>
+  </Title>
   <PrintSettings>
     <Landscape>true</Landscape>
     <PrintCurrentSelectionPosition>BOTTOM_OF_LAST_PAGE</PrintCurrentSelectionPosition>
@@ -452,6 +351,22 @@
     <SheetPrintDrawBackGround>false</SheetPrintDrawBackGround>
     <StrDevModeExtra></StrDevModeExtra>
   </PrintSettings>
-  <ErrorMessageOverrides></ErrorMessageOverrides>
+  <SortCriteria>
+    <SortByState>1</SortByState>
+    <SortByFrequency>0</SortByFrequency>
+    <SortByNumeric>0</SortByNumeric>
+    <SortByAscii>1</SortByAscii>
+    <SortByLoadOrder>0</SortByLoadOrder>
+    <SortByExpression>0</SortByExpression>
+    <Expression></Expression>
+    <SortByGreyness>0</SortByGreyness>
+  </SortCriteria>
+  <NumberPresentation></NumberPresentation>
+  <ExpandedNodes></ExpandedNodes>
   <OnSelectActionItems></OnSelectActionItems>
-</CurrentSelectionProperties>
+  <SuppressAutoSortByState>false</SuppressAutoSortByState>
+  <Expressions></Expressions>
+  <NullSymbol>-</NullSymbol>
+  <MissingSymbol>-</MissingSymbol>
+  <MoreSearchSettings></MoreSearchSettings>
+</ListBoxProperties>

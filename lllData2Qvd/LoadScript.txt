@@ -33,6 +33,7 @@ set HidPrefix = '^';
 set qvdPath = 'C:\Users\Piers\Documents\Tessa\Qlik\Data';
 set dataDir = 'C:\Users\Piers\Documents\Tessa\Qlik\Data';
 set drupal2Isoft = 900000;
+set prospectTag = 'Prospect Tags'
 
 // https://community.qlik.com/docs/DOC-3836
 set MonthDiff = Num(((year($2) * 12) + month($2)) - (((year($1) * 12) + month($1))));
@@ -473,13 +474,10 @@ Resident $(qvdContact);
 Drupal_UcOrder_temp:
 LOAD	
 	order_id + $(drupal2Isoft) as %OrderId, 
-	//uid,// + $(drupal2Isoft) as %ContactId,	 
 	order_total as  [Order Total], 	
 	uid as [LLL Drupal User number],
-	//Date(Floor(Date#('19800101', 'YYYYMMDD') + (created / 86400))) as [Order Date],
 	Date(Floor(Date#('19700101', 'YYYYMMDD') + (created / 86400))) as [Order Date],
 	-1 as [Drupal Order];
-	//Date(Floor(Date#('19700101', 'YYYYMMDD') + (created / 86400))) as [Order Date];
 /*
 	order_status, `primary_email`, `delivery_first_name`, `delivery_last_name`, 
     `delivery_phone`, `delivery_company`, `delivery_street1`, 
@@ -491,17 +489,7 @@ LOAD
     `payment_method`, data, created, modified, host;
 */
 SQL SELECT * FROM lldrupal.`uc_orders`;
-/*
-Drupal_temp:
-LOAD	
-	%OrderId as %OrerId, 
-	[Order Total] as [Order Toal], 	
-	[LLL Drupal User number] as [LLL Drupal  number],
-	[Order Date2] as [ Date2],
-	[Order Date3] as [ Date3],
-	[Order Date] as [Order Date],
-Resident Drupal_UcOrder_temp order by [Order Date] desc;
-*/
+
 left join(Drupal_UcOrder_temp)
 LOAD * Resident ContactIds_temp;
 drop table ContactIds_temp;
@@ -613,8 +601,7 @@ Resident $(qvdOrder)_tmp order by [Order Date] desc;
 drop table $(qvdOrder)_tmp;
 drop field [First Order Date] from $(qvdOrder);
 
-STORE $(qvdOrder) into $(qvdPath)/$(qvdOrder).qvd(qvd);
-STORE $(qvdContact) into $(qvdPath)/$(qvdContact).qvd(qvd);	
+
 ///$tab master calendar
 DataRange:
 LOAD
@@ -642,7 +629,8 @@ LOAD
 Resident TempCalDate
 order by CalDate asc;
 
-drop Tables DataRange, TempCalDate;
+drop Tables  TempCalDate;
+//drop Tables DataRange;
 STORE Calendar into $(qvdPath)/Calendar.qvd(qvd);
 
 
@@ -685,6 +673,28 @@ Resident TagApplied_temp;
 drop Table TagApplied_temp;
 
 STORE ContactTags into $(qvdPath)/ContactTags.qvd(qvd);
+
+
+FirstProspect:
+//noconcatenate LOAD
+load
+	%ContactId,
+	Date(min([Date Tag Applied]), 'DD/MM/YYYY')  as [Date First Prospect Tag]
+Resident ContactTags
+Where TagCategory = 'Prospect Tags' Group by %ContactId;
+
+left join($(qvdContact)) 
+LOAD * Resident FirstProspect;
+drop table FirstProspect;
+//drop table ContactTags;
+
+STORE $(qvdOrder) into $(qvdPath)/$(qvdOrder).qvd(qvd);
+STORE $(qvdContact) into $(qvdPath)/$(qvdContact).qvd(qvd);	
+
+
+	
+
+
 
 
 
