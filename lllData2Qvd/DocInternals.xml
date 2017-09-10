@@ -9,7 +9,6 @@
     <bool>false</bool>
     <bool>false</bool>
     <bool>false</bool>
-    <bool>false</bool>
   </AlwaysLoose>
   <FieldSrcTables>
     <String>6</String>
@@ -94,15 +93,15 @@
     <String>1</String>
     <String>Contact</String>
     <String>32</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>33</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>34</String>
     <String>2</String>
     <String>Product</String>
     <String>Order</String>
-    <String>33</String>
-    <String>1</String>
-    <String>Product</String>
-    <String>34</String>
-    <String>1</String>
-    <String>Product</String>
     <String>35</String>
     <String>1</String>
     <String>Product</String>
@@ -117,10 +116,10 @@
     <String>Product</String>
     <String>39</String>
     <String>1</String>
-    <String>Order</String>
+    <String>Product</String>
     <String>40</String>
     <String>1</String>
-    <String>Order</String>
+    <String>Product</String>
     <String>41</String>
     <String>1</String>
     <String>Order</String>
@@ -128,33 +127,33 @@
     <String>1</String>
     <String>Order</String>
     <String>43</String>
-    <String>2</String>
+    <String>1</String>
     <String>Order</String>
-    <String>Calendar</String>
     <String>44</String>
     <String>1</String>
     <String>Order</String>
     <String>45</String>
-    <String>1</String>
+    <String>2</String>
     <String>Order</String>
+    <String>Calendar</String>
     <String>46</String>
     <String>1</String>
     <String>Order</String>
     <String>47</String>
     <String>1</String>
-    <String>Contact</String>
+    <String>Order</String>
     <String>48</String>
     <String>1</String>
-    <String>Contact</String>
+    <String>Order</String>
     <String>49</String>
     <String>1</String>
-    <String>Order</String>
+    <String>Contact</String>
     <String>50</String>
     <String>1</String>
-    <String>DataRange</String>
+    <String>Contact</String>
     <String>51</String>
     <String>1</String>
-    <String>DataRange</String>
+    <String>Order</String>
     <String>52</String>
     <String>1</String>
     <String>Calendar</String>
@@ -310,6 +309,7 @@
           <String>Contact.Date Created</String>
           <String>Contact.Date Last Updated</String>
           <String>Contact.Drupal Role</String>
+          <String>Contact.Lead Source</String>
           <String>Contact.Membership Product Name</String>
           <String>Contact.Next IS Bill Date</String>
           <String>Sku</String>
@@ -339,6 +339,7 @@
           <String>Contact.Date Created</String>
           <String>Contact.Date Last Updated</String>
           <String>Contact.Drupal Role</String>
+          <String>Contact.Lead Source</String>
           <String>Contact.Membership Product Name</String>
           <String>Contact.Next IS Bill Date</String>
           <String>Sku</String>
@@ -376,8 +377,6 @@
           <String>First Order Date</String>
           <String>Date Became Member</String>
           <String>Months Since Fist Order</String>
-          <String>MinDate</String>
-          <String>MaxDate</String>
           <String>Day</String>
           <String>Year</String>
           <String>Month</String>
@@ -408,8 +407,6 @@
           <String>First Order Date</String>
           <String>Date Became Member</String>
           <String>Months Since Fist Order</String>
-          <String>MinDate</String>
-          <String>MaxDate</String>
           <String>Day</String>
           <String>Year</String>
           <String>Month</String>
@@ -427,8 +424,6 @@
           <String>Order Date</String>
           <String>First Order Date</String>
           <String>Date Became Member</String>
-          <String>MinDate</String>
-          <String>MaxDate</String>
           <String>MonthYear</String>
           <String>Date Tag Applied</String>
           <String>Date First Prospect Tag</String>
@@ -442,8 +437,6 @@
           <String>Order Date</String>
           <String>First Order Date</String>
           <String>Date Became Member</String>
-          <String>MinDate</String>
-          <String>MaxDate</String>
           <String>MonthYear</String>
           <String>Date Tag Applied</String>
           <String>Date First Prospect Tag</String>

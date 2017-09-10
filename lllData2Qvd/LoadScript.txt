@@ -17,6 +17,7 @@ SET LongMonthNames='January;February;March;April;May;June;July;August;September;
 SET DayNames='Mon;Tue;Wed;Thu;Fri;Sat;Sun';
 SET LongDayNames='Monday;Tuesday;Wednesday;Thursday;Friday;Saturday;Sunday';
 
+// Names of primary tables
 set qvdCampaign = 'Campaign';
 set qvdCampany = 'Company';
 set qvdContact = 'Contact';
@@ -32,11 +33,18 @@ set HidPrefix = '^';
 
 set qvdPath = 'C:\Users\Piers\Documents\Tessa\Qlik\Data';
 set dataDir = 'C:\Users\Piers\Documents\Tessa\Qlik\Data';
+// Indicate old Drupal and Access ids
 set drupal2Isoft = 900000;
+set access2Isoft = 1000000;
+set unknownProduct = 1000000;
+// Prospect tags are of particular interest
 set prospectTag = 'Prospect Tags'
 
 // https://community.qlik.com/docs/DOC-3836
 set MonthDiff = Num(((year($2) * 12) + month($2)) - (((year($1) * 12) + month($1))));
+
+ODBC CONNECT TO LLLDrupal_DSN;
+ODBC CONNECT TO LLLOldData_DSN;
 ///$tab referal partner
 $(qvdReferalPartner):
 QUALIFY *;
@@ -123,11 +131,12 @@ LOAD
 	[Street Address 2], 
 	City, 
 	State, 
+	// There are two postal code fields downloaded from infusionsoft. One of these
+	// Needs to be removed at some point in the process.
 	[Postal Code], 
-	//[Postal Code], two [Post Code] fields from infusionsoft, make sure one is removed. 
+	//[Postal Code], 
 	[Zip Four], 
 	Country, 
-//	Date(min([Order Date]),'DD/MM/YYYY') as [Date Became Member]
 	Date([Date Created],'DD/MM/YYYY') as [Date Created],
 	Date([Last Updated],'DD/MM/YYYY') as [Date Last Updated],
 	//Added
@@ -137,13 +146,14 @@ LOAD
 	[Drupal User Name], 
 	[Drupal Role], 
 	[Membership Product Name], 
-	//[//Feedback / testimonial], 
-	//[Old SO ID no], 
+	[Lead Source], 
 	Date([Next IS Bill Date Calendar], 'DD/MM/YYYY') as [Next IS Bill Date Calendar],
 	Date([Next IS Bill Date], 'DD/MM/YYYY') as [Next IS Bill Date]
 	//	
 	//Not needed
 	/*	
+	//[//Feedback / testimonial], 
+	//[Old SO ID no], 	
 		[First Name], 
 		[Last Name], 
 		[Spouse Name], 
@@ -262,14 +272,13 @@ FROM [$(dataDir)\$(qvdContact).csv] (txt, codepage is 1252, embedded labels, del
 //UNQUALIFY *;
 
 ///$tab drupal contact
-ODBC CONNECT TO LLLDrupal_DSN;
+// Add in users from the Drupal database. This includes older users present when
+// the Drupal database was created.
 DrupalUsers:
 LOAD 
 	uid as [LLL Drupal User number], 
 	name as [Name], 
-	//name as [Drupal User Name],
 	mail as [Email], 
-	//created as [Date Created];
 	Date(Floor(Date#('19700101', 'YYYYMMDD') + (created / 86400)),'DD/MM/YYYY') as [Date Created];
 	// Not needed
 	/*
@@ -302,6 +311,9 @@ Resident DrupalUsers;
 QUALIFY *;
 UNQUALIFY %ContactId, %CampanyId, [LLL Drupal User number];
 $(qvdContact):
+LOAD
+	*,
+	SubField([Postal Code],' ',1) as [District Code];
 Load
 	If( isNull(%ContactId), [LLL Drupal User number] + $(drupal2Isoft), %ContactId) as %ContactId, 
 	%CampanyId, 
@@ -321,6 +333,7 @@ Load
 	[Membership renewal date (non IS pmt)], 
 	[Drupal User Name], 
 	[Drupal Role], 
+	[Lead Source], 
 	[Membership Product Name], 
 	[Next IS Bill Date Calendar], 
 	[Next IS Bill Date]
@@ -329,7 +342,6 @@ UNQUALIFY *;
 
 drop table DrupalUsers;
 drop table $(qvdContact)_temp;
-//STORE $(qvdContact) into $(qvdPath)/$(qvdContact).qvd(qvd);
 
 
 ///$tab product
@@ -343,24 +355,7 @@ LOAD
 	[Product Category],
 	[Membership Months]
 FROM [$(dataDir)\$(qvdProduct).csv] (txt, codepage is 1252, embedded labels, delimiter is ',', msq);
-//STORE $(qvdProduct) into $(qvdPath)/$(qvdProduct).qvd(qvd);
-//drop table $(qvdProduct);
-/*
-ODBC CONNECT TO LLLDrupal_DSN;
-Drupal_UcProducts:
-LOAD 
-	vid + $(drupal2Isoft) as %ProductId, 	
-	model as [Product Name] , 
-	sell_price as Price, 
-	0 as [Membership Months],
-	'inactive' as [Product Status];	
-	//Not needed
-		//nid, `list_price`, cost, 
-		//weight, `weight_units`, length, width, height, `length_units`, `pkg_qty`, 
-	    //`default_qty`, `unique_hash`, ordering, shippable;	
-SQL SELECT *
-FROM lldrupal.`uc_products`;
-*/
+
 Concatenate($(qvdProduct))
 LOAD 
 	id as %ProductId,  
@@ -465,11 +460,24 @@ FROM [$(dataDir)\$(qvdOrder).csv] (txt, codepage is 1252, embedded labels, delim
 //The ideas is to merge orders from the drupal database
 //There are onging Drupla users added.
 
+// Drupal user ids stored in contact table
 ContactIds_temp:
 LOAD
 	%ContactId,
 	[LLL Drupal User number]
 Resident $(qvdContact);
+
+AcessOrders_temp:
+LOAD 
+	id + $(drupal2Isoft) as %OrderId, 
+	custid, 
+	orderdate, 
+	totalcharge;
+	//approvalcode, receiptnum, vat, custpo, repid, 
+	//comments, shiptype, shipcharge,  creditcard, 
+	//issuenumber, expiredate, cardtype, sameaddress, cardaddress, 
+	//cardpo, securitycode, promo, actioned, notes;
+SQL SELECT * FROM movedb.orders;
 
 Drupal_UcOrder_temp:
 LOAD	
@@ -519,16 +527,57 @@ LOAD
 Resident Drupal_UcOrder_temp order by %OrderId desc;
 drop table Drupal_UcOrder_temp;
 
-Join($(qvdOrder)_tmp)
-LOAD * Resident Drupal_UcOrderWithContactId_temp where [Order Total] > 0 and %ContactId <> 900000;
+//Add old data from access database
+outer join(Drupal_UcOrderWithContactId_temp)
+LOAD * Resident AcessOrders_temp;
+drop table AcessOrders_temp;
+Drupal_UcOrderWithContactId_temp2:
+Load 
+	//*
+	if (IsNull(%ContactId) or %ContactId = 0, custid+$(access2Isoft), %ContactId) as %ContactId, 
+	%OrderId, 
+	If (IsNull([Order Total]), 	totalcharge, [Order Total]) as [Order Total],
+	If (IsNull(%ProductId), $(unknownProduct), %ProductId) as %ProductId,
+	[Order Title],
+	If (IsNull([Order Date]), Date( date#(orderdate, 'MM/DD/YY'),'DD/MM/YYYY') , Date([Order Date],'DD/MM/YYYY')) as [Order Date],
+	[Drupal Order]
+Resident Drupal_UcOrderWithContactId_temp;
 drop table Drupal_UcOrderWithContactId_temp;
 
+//Reover empty orders. There seems to be two blank orders a day added to the drupal database.
+Join($(qvdOrder)_tmp)
+LOAD * Resident Drupal_UcOrderWithContactId_temp2 where [Order Total] > 0 and %ContactId <> 900000;
+drop table Drupal_UcOrderWithContactId_temp2;
 
 
 
 
 
 
+
+///$tab Access Contacts
+NotFoundYetContacts_temp:
+Load
+	distinct %ContactId
+Resident $(qvdOrder)_tmp
+where %ContactId > $(access2Isoft);
+
+AccessContacts_temp:
+LOAD 
+	id + $(access2Isoft) as %ContactId, 
+	contact as Contact.Name,
+	email as Contact.Email;
+	// bid, company,  address1, city, prov, postal, country, 
+	// worldpart, phone, fax, url, ip, comments, active, new, 
+	// mailing, utypeid, usernotes, referral, referralinfo, extraid;
+SQL SELECT * FROM movedb.userdetail;
+
+left join(NotFoundYetContacts_temp)
+Load * Resident AccessContacts_temp;
+drop table AccessContacts_temp;
+
+Concatenate($(qvdContact)) LOAD * Resident NotFoundYetContacts_temp order by %ContactId desc;
+drop table NotFoundYetContacts_temp;
 ///$tab order time since first order
 // Add a field to show number the date a cusomer's first order was made
 OD_tmp:
@@ -585,24 +634,18 @@ LOAD
 	 *
 Resident BecameMember_tmp;
 drop table BecameMember_tmp;
-/*
+
 $(qvdOrder):
 LOAD
 	*,
 	$(MonthDiff([First Order Date], [Order Date])) as [Months Since Fist Order]	
-Resident $(qvdOrder)_tmp order by [Order Date] desc;
-drop table $(qvdOrder)_tmp;
-*/
-$(qvdOrder):
-LOAD
-	*,
-	$(MonthDiff([First Order Date], [Order Date])) as [Months Since Fist Order]	
-Resident $(qvdOrder)_tmp order by [Order Date] desc;
+Resident $(qvdOrder)_tmp order by [Order Date] asc;
 drop table $(qvdOrder)_tmp;
 drop field [First Order Date] from $(qvdOrder);
 
 
 ///$tab master calendar
+//Copied from course
 DataRange:
 LOAD
 	min([Order Date]) as MinDate,
@@ -630,7 +673,7 @@ Resident TempCalDate
 order by CalDate asc;
 
 drop Tables  TempCalDate;
-//drop Tables DataRange;
+drop Tables DataRange;
 STORE Calendar into $(qvdPath)/Calendar.qvd(qvd);
 
 
@@ -675,7 +718,7 @@ drop Table TagApplied_temp;
 STORE ContactTags into $(qvdPath)/ContactTags.qvd(qvd);
 
 
-FirstProspect:
+FirstProspect_temp:
 //noconcatenate LOAD
 load
 	%ContactId,
@@ -684,12 +727,10 @@ Resident ContactTags
 Where TagCategory = 'Prospect Tags' Group by %ContactId;
 
 left join($(qvdContact)) 
-LOAD * Resident FirstProspect;
-drop table FirstProspect;
+LOAD * Resident FirstProspect_temp order by %ContactId desc;
+drop table FirstProspect_temp;
 //drop table ContactTags;
 
-STORE $(qvdOrder) into $(qvdPath)/$(qvdOrder).qvd(qvd);
-STORE $(qvdContact) into $(qvdPath)/$(qvdContact).qvd(qvd);	
 
 
 	
@@ -701,6 +742,37 @@ STORE $(qvdContact) into $(qvdPath)/$(qvdContact).qvd(qvd);
 
 
 
+
+///$tab Post Code
+/*
+PostCode_temp:
+LOAD Postcode as [Postal Code], 
+     Latitude, 
+     Longitude, 
+     County, 
+     District, 
+     Region
+FROM [$(dataDir)\England postcodes.csv] (txt, codepage is 1252, embedded labels, delimiter is ',', msq);
+
+PostCode_temp:
+LOAD 
+	 Postcode as [Contact.District Code], 
+     Latitude as [PC Latitude], 
+     Longitude as [PC Longitude], 
+     [Town/Area] as [PC Town/Area], 
+     Region as [PC Region]
+FROM [$(dataDir)\Postcode districts.csv] (txt, codepage is 1252, embedded labels, delimiter is ',', msq);
+
+left join($(qvdContact)) 
+LOAD * Resident PostCode_temp order by %ContactId;
+drop table PostCode_temp;
+*/
+STORE $(qvdOrder) into $(qvdPath)/$(qvdOrder).qvd(qvd);
+STORE $(qvdContact) into $(qvdPath)/$(qvdContact).qvd(qvd);	
+
+//drop table $(qvdOrder);
+//drop table $(qvdContact);
+//drop table ContactTags;
 
 ///$tab visitor
 /*

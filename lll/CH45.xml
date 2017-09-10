@@ -225,7 +225,9 @@
   <_ExpressionDatas>
     <ExpressionData>
       <Definition>
-        <v>count( distinct aggr( if( year([Date Became Member]) = Year and ([Date First Prospect Tag] &lt;= [Date Became Member]) , %ContactId) , %OrderId))</v>
+        <v>//count(distinct if([Date Became Member]&gt;=[Date Tag Applied] and [Date First Prospect Tag]=[Date Tag Applied], %ContactId))
+
+count( distinct  if( year([Date Became Member]) = Year and ([Date First Prospect Tag] &lt;= [Date Became Member]) , %ContactId) )</v>
       </Definition>
       <Enable>true</Enable>
       <Present>false</Present>
@@ -250,7 +252,8 @@
     </ExpressionData>
     <ExpressionData>
       <Definition>
-        <v>count( distinct aggr( if( year([Date Became Member]) = Year, %ContactId) , %OrderId)) - count( distinct aggr( if( year([Date Became Member]) = Year and ([Date First Prospect Tag] &lt;= [Date Became Member]) , %ContactId) , %OrderId))</v>
+        <v>//count( distinct  if( year([Date Became Member]) = Year, %ContactId)) - count( distinct  if( year([Date Became Member]) = Year and ([Date First Prospect Tag] &lt;= [Date Became Member]) , %ContactId ) )
+count(distinct if(year([Date Became Member]) = Year, %ContactId)) - count( distinct  if( year([Date Became Member]) = Year and ([Date First Prospect Tag] &lt;= [Date Became Member]) , %ContactId) )</v>
       </Definition>
       <Enable>true</Enable>
       <Present>false</Present>
@@ -2985,7 +2988,9 @@
           <InternalId>-1</InternalId>
           <ExpressionData>
             <Definition>
-              <v>count( distinct aggr( if( year([Date Became Member]) = Year and ([Date First Prospect Tag] &lt;= [Date Became Member]) , %ContactId) , %OrderId))</v>
+              <v>//count(distinct if([Date Became Member]&gt;=[Date Tag Applied] and [Date First Prospect Tag]=[Date Tag Applied], %ContactId))
+
+count( distinct  if( year([Date Became Member]) = Year and ([Date First Prospect Tag] &lt;= [Date Became Member]) , %ContactId) )</v>
             </Definition>
             <Enable>true</Enable>
             <Present>false</Present>
@@ -3459,7 +3464,8 @@
           <InternalId>-1</InternalId>
           <ExpressionData>
             <Definition>
-              <v>count( distinct aggr( if( year([Date Became Member]) = Year, %ContactId) , %OrderId)) - count( distinct aggr( if( year([Date Became Member]) = Year and ([Date First Prospect Tag] &lt;= [Date Became Member]) , %ContactId) , %OrderId))</v>
+              <v>//count( distinct  if( year([Date Became Member]) = Year, %ContactId)) - count( distinct  if( year([Date Became Member]) = Year and ([Date First Prospect Tag] &lt;= [Date Became Member]) , %ContactId ) )
+count(distinct if(year([Date Became Member]) = Year, %ContactId)) - count( distinct  if( year([Date Became Member]) = Year and ([Date First Prospect Tag] &lt;= [Date Became Member]) , %ContactId) )</v>
             </Definition>
             <Enable>true</Enable>
             <Present>false</Present>

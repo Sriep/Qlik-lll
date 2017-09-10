@@ -86,25 +86,25 @@
     <String>1</String>
     <String>Contact</String>
     <String>30</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>31</String>
+    <String>1</String>
+    <String>Contact</String>
+    <String>32</String>
     <String>2</String>
     <String>Order</String>
     <String>Product</String>
-    <String>31</String>
-    <String>1</String>
-    <String>Order</String>
-    <String>32</String>
-    <String>1</String>
-    <String>Order</String>
     <String>33</String>
-    <String>2</String>
+    <String>1</String>
     <String>Order</String>
-    <String>Calendar</String>
     <String>34</String>
     <String>1</String>
     <String>Order</String>
     <String>35</String>
-    <String>1</String>
+    <String>2</String>
     <String>Order</String>
+    <String>Calendar</String>
     <String>36</String>
     <String>1</String>
     <String>Order</String>
@@ -122,10 +122,10 @@
     <String>Order</String>
     <String>41</String>
     <String>1</String>
-    <String>Product</String>
+    <String>Order</String>
     <String>42</String>
     <String>1</String>
-    <String>Product</String>
+    <String>Order</String>
     <String>43</String>
     <String>1</String>
     <String>Product</String>
@@ -140,10 +140,10 @@
     <String>Product</String>
     <String>47</String>
     <String>1</String>
-    <String>Calendar</String>
+    <String>Product</String>
     <String>48</String>
     <String>1</String>
-    <String>Calendar</String>
+    <String>Product</String>
     <String>49</String>
     <String>1</String>
     <String>Calendar</String>
@@ -158,10 +158,10 @@
     <String>Calendar</String>
     <String>53</String>
     <String>1</String>
-    <String>ContactTags</String>
+    <String>Calendar</String>
     <String>54</String>
     <String>1</String>
-    <String>ContactTags</String>
+    <String>Calendar</String>
     <String>55</String>
     <String>1</String>
     <String>ContactTags</String>
@@ -170,8 +170,14 @@
     <String>ContactTags</String>
     <String>57</String>
     <String>1</String>
-    <String>Bookmarks</String>
+    <String>ContactTags</String>
     <String>58</String>
+    <String>1</String>
+    <String>ContactTags</String>
+    <String>59</String>
+    <String>1</String>
+    <String>Bookmarks</String>
+    <String>60</String>
     <String>1</String>
     <String>Bookmarks</String>
   </FieldSrcTables>
@@ -6307,6 +6313,7 @@
           <String>Contact.Date Created</String>
           <String>Contact.Date Last Updated</String>
           <String>Contact.Drupal Role</String>
+          <String>Contact.Lead Source</String>
           <String>Contact.Membership Product Name</String>
           <String>Contact.Next IS Bill Date</String>
           <String>Order Title</String>
@@ -6335,6 +6342,7 @@
           <String>Contact.Date Created</String>
           <String>Contact.Date Last Updated</String>
           <String>Contact.Drupal Role</String>
+          <String>Contact.Lead Source</String>
           <String>Contact.Membership Product Name</String>
           <String>Contact.Next IS Bill Date</String>
           <String>Order Title</String>

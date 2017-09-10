@@ -3373,22 +3373,10 @@
           <DimName>Order Date</DimName>
           <ElemNo>
             <int>4492</int>
-            <int>4734</int>
-            <int>4735</int>
-            <int>4736</int>
           </ElemNo>
           <ElemValues>
             <Blob>
                 AgAAAABgW+JA
-            </Blob>
-            <Blob>
-                AgAAAABALuJA
-            </Blob>
-            <Blob>
-                AgAAAAAALuJA
-            </Blob>
-            <Blob>
-                AgAAAADgLeJA
             </Blob>
           </ElemValues>
         </Pos>

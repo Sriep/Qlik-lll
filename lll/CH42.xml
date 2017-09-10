@@ -225,7 +225,8 @@
   <_ExpressionDatas>
     <ExpressionData>
       <Definition>
-        <v>count( distinct aggr( if( year([Date Became Member]) = Year, %ContactId) , %OrderId))</v>
+        <v>count(distinct if(year([Date Became Member]) = Year, %ContactId))
+</v>
       </Definition>
       <Enable>true</Enable>
       <Present>false</Present>
@@ -250,7 +251,9 @@
     </ExpressionData>
     <ExpressionData>
       <Definition>
-        <v>count( distinct aggr( if( year([Date Became Member]) = Year and ([Date First Prospect Tag] &lt;= [Date Became Member]) , %ContactId) , %OrderId))</v>
+        <v>count( distinct  if( year([Date Became Member]) = Year and ([Date First Prospect Tag] &lt;= [Date Became Member]) , %ContactId) )
+
+</v>
       </Definition>
       <Enable>true</Enable>
       <Present>false</Present>
@@ -275,7 +278,7 @@
     </ExpressionData>
     <ExpressionData>
       <Definition>
-        <v>count( distinct aggr( if( year([Date Became Member]) = Year and ([Date First Prospect Tag] &gt; [Date Became Member]) , %ContactId) , %OrderId))</v>
+        <v>count( distinct  if( year([Date Became Member]) = Year and ([Date First Prospect Tag] &gt; [Date Became Member]) , %ContactId) )</v>
       </Definition>
       <Enable>true</Enable>
       <Present>false</Present>
@@ -300,7 +303,7 @@
     </ExpressionData>
     <ExpressionData>
       <Definition>
-        <v>count( distinct aggr( if( year([Date Became Member]) = Year and IsNull([Date First Prospect Tag]) , %ContactId) , %OrderId))</v>
+        <v>count( distinct  if( year([Date Became Member]) = Year and IsNull([Date First Prospect Tag]) , %ContactId) )</v>
       </Definition>
       <Enable>true</Enable>
       <Present>false</Present>
@@ -694,7 +697,7 @@
           <Alpha>255</Alpha>
         </TestTubeColor>
       </GaugeSettings>
-      <ColWidth>300</ColWidth>
+      <ColWidth>256</ColWidth>
       <ShowAsPopup>false</ShowAsPopup>
       <Searchable>false</Searchable>
       <LineMode>LINEMODE_STRAIGHT</LineMode>
@@ -1664,7 +1667,7 @@
           <Alpha>255</Alpha>
         </TestTubeColor>
       </GaugeSettings>
-      <ColWidth>300</ColWidth>
+      <ColWidth>222</ColWidth>
       <ShowAsPopup>false</ShowAsPopup>
       <Searchable>false</Searchable>
       <LineMode>LINEMODE_STRAIGHT</LineMode>
@@ -3802,9 +3805,9 @@
     <VerticalLabels>false</VerticalLabels>
     <ColWidths>
       <int>300</int>
+      <int>256</int>
       <int>300</int>
-      <int>300</int>
-      <int>300</int>
+      <int>222</int>
       <int>300</int>
     </ColWidths>
     <Striping>
@@ -4353,7 +4356,8 @@
           <InternalId>-1</InternalId>
           <ExpressionData>
             <Definition>
-              <v>count( distinct aggr( if( year([Date Became Member]) = Year, %ContactId) , %OrderId))</v>
+              <v>count(distinct if(year([Date Became Member]) = Year, %ContactId))
+</v>
             </Definition>
             <Enable>true</Enable>
             <Present>false</Present>
@@ -4745,7 +4749,7 @@
                 <Alpha>255</Alpha>
               </TestTubeColor>
             </GaugeSettings>
-            <ColWidth>300</ColWidth>
+            <ColWidth>256</ColWidth>
             <ShowAsPopup>false</ShowAsPopup>
             <Searchable>false</Searchable>
             <LineMode>LINEMODE_STRAIGHT</LineMode>
@@ -4936,7 +4940,9 @@
           <InternalId>-1</InternalId>
           <ExpressionData>
             <Definition>
-              <v>count( distinct aggr( if( year([Date Became Member]) = Year and ([Date First Prospect Tag] &lt;= [Date Became Member]) , %ContactId) , %OrderId))</v>
+              <v>count( distinct  if( year([Date Became Member]) = Year and ([Date First Prospect Tag] &lt;= [Date Became Member]) , %ContactId) )
+
+</v>
             </Definition>
             <Enable>true</Enable>
             <Present>false</Present>
@@ -5519,7 +5525,7 @@
           <InternalId>-1</InternalId>
           <ExpressionData>
             <Definition>
-              <v>count( distinct aggr( if( year([Date Became Member]) = Year and ([Date First Prospect Tag] &gt; [Date Became Member]) , %ContactId) , %OrderId))</v>
+              <v>count( distinct  if( year([Date Became Member]) = Year and ([Date First Prospect Tag] &gt; [Date Became Member]) , %ContactId) )</v>
             </Definition>
             <Enable>true</Enable>
             <Present>false</Present>
@@ -5911,7 +5917,7 @@
                 <Alpha>255</Alpha>
               </TestTubeColor>
             </GaugeSettings>
-            <ColWidth>300</ColWidth>
+            <ColWidth>222</ColWidth>
             <ShowAsPopup>false</ShowAsPopup>
             <Searchable>false</Searchable>
             <LineMode>LINEMODE_STRAIGHT</LineMode>
@@ -6102,7 +6108,7 @@
           <InternalId>-1</InternalId>
           <ExpressionData>
             <Definition>
-              <v>count( distinct aggr( if( year([Date Became Member]) = Year and IsNull([Date First Prospect Tag]) , %ContactId) , %OrderId))</v>
+              <v>count( distinct  if( year([Date Became Member]) = Year and IsNull([Date First Prospect Tag]) , %ContactId) )</v>
             </Definition>
             <Enable>true</Enable>
             <Present>false</Present>

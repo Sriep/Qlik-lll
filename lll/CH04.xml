@@ -630,21 +630,14 @@
   <Dimensions>
     <ChartDimensionDataDef>
       <PseudoDef>
-        <Name>Contact.Name</Name>
-        <Type>PRESENT</Type>
+        <Name>=If(not IsNull(Contact.Name),Contact.Name)</Name>
+        <Type>IS_EXPR</Type>
       </PseudoDef>
-      <Title></Title>
+      <Title>
+        <v>Name</v>
+      </Title>
       <TotalString></TotalString>
-      <SortCriteria>
-        <SortByState>1</SortByState>
-        <SortByFrequency>0</SortByFrequency>
-        <SortByNumeric>0</SortByNumeric>
-        <SortByAscii>1</SortByAscii>
-        <SortByLoadOrder>0</SortByLoadOrder>
-        <SortByExpression>0</SortByExpression>
-        <Expression></Expression>
-        <SortByGreyness>0</SortByGreyness>
-      </SortCriteria>
+      <SortCriteria></SortCriteria>
       <ShowAll>false</ShowAll>
       <ShowLabel>true</ShowLabel>
       <ShowLegend>true</ShowLegend>
@@ -785,7 +778,9 @@
       <MaxStringLength>0</MaxStringLength>
       <AttributeExpressions></AttributeExpressions>
       <PageBreaks>NO_BREAKS</PageBreaks>
-      <MaxNumShown></MaxNumShown>
+      <MaxNumShown>
+        <v>9</v>
+      </MaxNumShown>
       <Spacing></Spacing>
       <ColWidth>300</ColWidth>
       <OverrideGroupSort>false</OverrideGroupSort>
@@ -798,7 +793,7 @@
           <v>10</v>
         </OtherCounted>
         <OtherLimit>
-          <v>5%</v>
+          <v>0.05</v>
         </OtherLimit>
         <OtherLimitMode>OTHER_GT_LIMIT</OtherLimitMode>
         <SuppressOther>true</SuppressOther>
@@ -939,7 +934,9 @@
         </Units>
         <Backcast></Backcast>
         <Forecast></Forecast>
-        <Max></Max>
+        <Max>
+          <v>2600</v>
+        </Max>
         <Min></Min>
         <Center></Center>
         <Step></Step>
@@ -2479,8 +2476,8 @@
     </DefaultExprCellVariations>
     <StraightShowOthers>false</StraightShowOthers>
     <InterFieldSortOrder>
-      <int>1</int>
       <int>0</int>
+      <int>1</int>
     </InterFieldSortOrder>
     <ExpressionPosition>255</ExpressionPosition>
     <NumberOfLeftDimensions>255</NumberOfLeftDimensions>
@@ -2513,7 +2510,7 @@
       <ExpansionData>
         <ExcludeList>false</ExcludeList>
         <Pos>
-          <DimName>Contact.Name</DimName>
+          <DimName>=If(not IsNull(Contact.Name),Contact.Name)</DimName>
           <ElemNo></ElemNo>
           <ElemValues></ElemValues>
         </Pos>
@@ -2946,7 +2943,9 @@
             </Units>
             <Backcast></Backcast>
             <Forecast></Forecast>
-            <Max></Max>
+            <Max>
+              <v>2600</v>
+            </Max>
             <Min></Min>
             <Center></Center>
             <Step></Step>

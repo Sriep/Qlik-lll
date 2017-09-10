@@ -67,7 +67,7 @@
       <HelpText></HelpText>
       <ObjectId></ObjectId>
       <ShrinkFrameToData>true</ShrinkFrameToData>
-      <ShowCaption>true</ShowCaption>
+      <ShowCaption>false</ShowCaption>
       <MultiLine>0</MultiLine>
       <ActiveBgColor>
         <Mode>COLORAREA_SOLID</Mode>
@@ -227,7 +227,9 @@
   <_ExpressionDatas>
     <ExpressionData>
       <Definition>
-        <v>count(if( ([Date Became Member]-[Date Tag Applied]&gt;=0) and ([Date First Prospect Tag]=[Date Tag Applied]), 1))</v>
+        <v>count(distinct if([Date Became Member]&gt;=[Date Tag Applied] and [Date First Prospect Tag]=[Date Tag Applied], %ContactId))
+
+</v>
       </Definition>
       <Enable>true</Enable>
       <Present>false</Present>
@@ -252,7 +254,7 @@
     </ExpressionData>
     <ExpressionData>
       <Definition>
-        <v>count(if([Date Became Member]-[Date Tag Applied]&gt;=0, 1))</v>
+        <v>count(distinct if([Date Became Member]&gt;=[Date Tag Applied], %ContactId))</v>
       </Definition>
       <Enable>true</Enable>
       <Present>false</Present>
@@ -302,7 +304,8 @@
     </ExpressionData>
     <ExpressionData>
       <Definition>
-        <v>Avg(if([Date Became Member]-[Date Tag Applied]&gt;=0, [Date Became Member]-[Date Tag Applied]))</v>
+        <v>Avg( Aggr( if([Date Became Member]&gt;=[Date Tag Applied] and [Date First Prospect Tag]=[Date Tag Applied], [Date Became Member]-[Date Tag Applied] ), %ContactId) )
+</v>
       </Definition>
       <Enable>true</Enable>
       <Present>false</Present>
@@ -343,7 +346,7 @@
       <BckAsLine>true</BckAsLine>
       <BckAsSymbol>false</BckAsSymbol>
       <Label>
-        <v>Taged first day</v>
+        <v>#Tagged 1st day</v>
       </Label>
       <BorderWidth>0</BorderWidth>
       <Invisible>false</Invisible>
@@ -353,10 +356,10 @@
       <NumAdjust>2</NumAdjust>
       <VerticalAdjust>4</VerticalAdjust>
       <NumberPresentation>
-        <Type>UNKNOWN</Type>
-        <nDec>10</nDec>
+        <Type>INTEGER</Type>
+        <nDec>0</nDec>
         <UseThou>0</UseThou>
-        <Fmt></Fmt>
+        <Fmt>#,##0</Fmt>
         <Dec>.</Dec>
         <Thou>,</Thou>
       </NumberPresentation>
@@ -1798,7 +1801,7 @@
       <BckAsLine>true</BckAsLine>
       <BckAsSymbol>false</BckAsSymbol>
       <Label>
-        <v>Avg #Days</v>
+        <v>Average days to join</v>
       </Label>
       <BorderWidth>0</BorderWidth>
       <Invisible>false</Invisible>
@@ -1808,20 +1811,20 @@
       <NumAdjust>2</NumAdjust>
       <VerticalAdjust>4</VerticalAdjust>
       <NumberPresentation>
-        <Type>FIX</Type>
-        <nDec>2</nDec>
+        <Type>INTEGER</Type>
+        <nDec>1</nDec>
         <UseThou>0</UseThou>
-        <Fmt>#,##0.00</Fmt>
+        <Fmt>#,##0</Fmt>
         <Dec>.</Dec>
         <Thou>,</Thou>
       </NumberPresentation>
       <PrimaryAxis>true</PrimaryAxis>
       <ShowExpressionLabel>true</ShowExpressionLabel>
       <SavedPresentation>
-        <Type>UNKNOWN</Type>
-        <nDec>10</nDec>
+        <Type>INTEGER</Type>
+        <nDec>1</nDec>
         <UseThou>0</UseThou>
-        <Fmt></Fmt>
+        <Fmt>#,##0</Fmt>
         <Dec>.</Dec>
         <Thou>,</Thou>
       </SavedPresentation>
@@ -2277,9 +2280,9 @@
       <Title></Title>
       <TotalString></TotalString>
       <SortCriteria>
-        <SortByState>1</SortByState>
+        <SortByState>0</SortByState>
         <SortByFrequency>0</SortByFrequency>
-        <SortByNumeric>-1</SortByNumeric>
+        <SortByNumeric>1</SortByNumeric>
         <SortByAscii>1</SortByAscii>
         <SortByLoadOrder>0</SortByLoadOrder>
         <SortByExpression>0</SortByExpression>
@@ -3805,7 +3808,7 @@
       <int>300</int>
       <int>300</int>
       <int>300</int>
-      <int>300</int>
+      <int>100</int>
     </ColWidths>
     <Striping>
       <int>1</int>
@@ -4299,11 +4302,11 @@
     </DefaultExprCellVariations>
     <StraightShowOthers>false</StraightShowOthers>
     <InterFieldSortOrder>
-      <int>4</int>
-      <int>1</int>
       <int>0</int>
+      <int>1</int>
       <int>2</int>
       <int>3</int>
+      <int>4</int>
     </InterFieldSortOrder>
     <ExpressionPosition>1</ExpressionPosition>
     <NumberOfLeftDimensions>1</NumberOfLeftDimensions>
@@ -4353,7 +4356,9 @@
           <InternalId>-1</InternalId>
           <ExpressionData>
             <Definition>
-              <v>count(if( ([Date Became Member]-[Date Tag Applied]&gt;=0) and ([Date First Prospect Tag]=[Date Tag Applied]), 1))</v>
+              <v>count(distinct if([Date Became Member]&gt;=[Date Tag Applied] and [Date First Prospect Tag]=[Date Tag Applied], %ContactId))
+
+</v>
             </Definition>
             <Enable>true</Enable>
             <Present>false</Present>
@@ -4392,7 +4397,7 @@
             <BckAsLine>true</BckAsLine>
             <BckAsSymbol>false</BckAsSymbol>
             <Label>
-              <v>Taged first day</v>
+              <v>#Tagged 1st day</v>
             </Label>
             <BorderWidth>0</BorderWidth>
             <Invisible>false</Invisible>
@@ -4402,10 +4407,10 @@
             <NumAdjust>2</NumAdjust>
             <VerticalAdjust>4</VerticalAdjust>
             <NumberPresentation>
-              <Type>UNKNOWN</Type>
-              <nDec>10</nDec>
+              <Type>INTEGER</Type>
+              <nDec>0</nDec>
               <UseThou>0</UseThou>
-              <Fmt></Fmt>
+              <Fmt>#,##0</Fmt>
               <Dec>.</Dec>
               <Thou>,</Thou>
             </NumberPresentation>
@@ -4936,7 +4941,7 @@
           <InternalId>-1</InternalId>
           <ExpressionData>
             <Definition>
-              <v>count(if([Date Became Member]-[Date Tag Applied]&gt;=0, 1))</v>
+              <v>count(distinct if([Date Became Member]&gt;=[Date Tag Applied], %ContactId))</v>
             </Definition>
             <Enable>true</Enable>
             <Present>false</Present>
@@ -6102,7 +6107,8 @@
           <InternalId>-1</InternalId>
           <ExpressionData>
             <Definition>
-              <v>Avg(if([Date Became Member]-[Date Tag Applied]&gt;=0, [Date Became Member]-[Date Tag Applied]))</v>
+              <v>Avg( Aggr( if([Date Became Member]&gt;=[Date Tag Applied] and [Date First Prospect Tag]=[Date Tag Applied], [Date Became Member]-[Date Tag Applied] ), %ContactId) )
+</v>
             </Definition>
             <Enable>true</Enable>
             <Present>false</Present>
@@ -6141,7 +6147,7 @@
             <BckAsLine>true</BckAsLine>
             <BckAsSymbol>false</BckAsSymbol>
             <Label>
-              <v>Avg #Days</v>
+              <v>Average days to join</v>
             </Label>
             <BorderWidth>0</BorderWidth>
             <Invisible>false</Invisible>
@@ -6151,20 +6157,20 @@
             <NumAdjust>2</NumAdjust>
             <VerticalAdjust>4</VerticalAdjust>
             <NumberPresentation>
-              <Type>FIX</Type>
-              <nDec>2</nDec>
+              <Type>INTEGER</Type>
+              <nDec>1</nDec>
               <UseThou>0</UseThou>
-              <Fmt>#,##0.00</Fmt>
+              <Fmt>#,##0</Fmt>
               <Dec>.</Dec>
               <Thou>,</Thou>
             </NumberPresentation>
             <PrimaryAxis>true</PrimaryAxis>
             <ShowExpressionLabel>true</ShowExpressionLabel>
             <SavedPresentation>
-              <Type>UNKNOWN</Type>
-              <nDec>10</nDec>
+              <Type>INTEGER</Type>
+              <nDec>1</nDec>
               <UseThou>0</UseThou>
-              <Fmt></Fmt>
+              <Fmt>#,##0</Fmt>
               <Dec>.</Dec>
               <Thou>,</Thou>
             </SavedPresentation>
@@ -6674,7 +6680,12 @@
             <MinorStepMode>0</MinorStepMode>
           </AxisData>
           <AttributeExpressions></AttributeExpressions>
-          <EnableCondition></EnableCondition>
+          <EnableCondition>
+            <Type>COND_EX_COND</Type>
+            <Expression>GetSelectedCount(TagName)= 1
+
+</Expression>
+          </EnableCondition>
         </Data>
         <SubExpressions></SubExpressions>
       </MainExpressionData>
